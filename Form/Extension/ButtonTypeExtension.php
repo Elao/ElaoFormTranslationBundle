@@ -8,21 +8,21 @@
  * @author Elao <contact@elao.com>
  */
 
-namespace Elao\Bundle\FormTranslationBundle\Form\Extension\Tree;
+namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Form Type Extension
+ * Button Type Extension
  */
-class FormTypeExtension extends TreeAwareExtension
+class ButtonTypeExtension extends TreeAwareExtension
 {
     /**
      * {@inheritdoc}
      */
     public function getExtendedType()
     {
-        return 'form';
+        return 'button';
     }
 
     /**
@@ -30,8 +30,6 @@ class FormTypeExtension extends TreeAwareExtension
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array('help' => false));
-
         if ($this->autoGenerate) {
             $resolver->replaceDefaults(array('label' => true));
         }
