@@ -4,6 +4,8 @@ ElaoFormTranslationBundle
 Description:
 --------------
 
+__[WIP] This bundle is currently in developpement__
+
 This bundle provides a nice way of generating translation keys for form fields in a way you can easily deduce them.
 It's used mainly to generate automatic labels on fields but can be use to built any key.
 
@@ -35,7 +37,7 @@ _Note : The keys will only be generated and won't be dumped when you use `transl
 Installation:
 --------------
 
-Add FOSUserBundle in your composer.json:
+Add ElaoFormTranslationBundle in your composer.json:
 ``` js
 {
     "require": {
