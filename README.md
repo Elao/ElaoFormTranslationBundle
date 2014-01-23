@@ -145,35 +145,35 @@ elao_form_translation:
 #### Default configuration:
 
 ``` yml
-    elao_form_translation:
-        enabled: true
+elao_form_translation:
+    enabled: true
 
-        # Generate translation keys for all missing labels
-        auto_generate_label: false
+    # Generate translation keys for all missing labels
+    auto_generate_label: false
 
-        # Customize available keys
-        keys:
-            form:
-                label:  "label"
-                help:   "help"
-                # Add yours ...
-            collection:
-                label_add:      "label_add"
-                label_delete:   "label_delete"
-                # Add yours ...
+    # Customize available keys
+    keys:
+        form:
+            label:  "label"
+            help:   "help"
+            # Add yours ...
+        collection:
+            label_add:      "label_add"
+            label_delete:   "label_delete"
+            # Add yours ...
 
-        # Customize the ways keys are built
-        blocks:
+    # Customize the ways keys are built
+    blocks:
 
-            # Prefix for prototype nodes
-            prototype:  "prototype"
+        # Prefix for prototype nodes
+        prototype:  "prototype"
 
-            # Prefix for children nodes
-            children:   "children"
+        # Prefix for children nodes
+        children:   "children"
 
-            # Prefix at the root of the key
-            root:       "form"
+        # Prefix at the root of the key
+        root:       "form"
 
-            # Separator te be used between nodes
-            separator:  "."
+        # Separator te be used between nodes
+        separator:  "."
 ```
