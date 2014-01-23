@@ -119,6 +119,9 @@ This will set default label value to `true` so keys will be generated for every 
 If you need to override this behaviour, you can still provide a `label` key for your field in order to use your translation key. In this case, no keys will be generated.
 
 
+Customization and configuration:
+--------------
+
 #### Customize the keys:
 
 If for a reason or another you need to customize the key for example instead of using "form.register.name.label" you want to use "my_custom_key.register.name.label", you'll have to update the `root` configuration key under `blocks` key.
