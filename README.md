@@ -95,7 +95,7 @@ class RegisterType extends AbstractType
                 'label' => false // Will NOT generate a `<label>` in the `HTML`
             ));
             ->add('email', null, array(
-                'label' => 'my.custom.key' // Will generate 'my.custom.key'
+                'label' => 'my.custom.key' // Default behaviour
             ));
     }
 
