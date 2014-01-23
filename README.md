@@ -145,7 +145,7 @@ elao_form_translation:
 #### Default configuration:
 
 ``` yml
-    elao_form_translation_translation:
+    elao_form_translation:
         enabled: true
 
         # Generate translation keys for all missing labels
