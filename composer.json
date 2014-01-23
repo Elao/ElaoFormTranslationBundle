@@ -1,0 +1,33 @@
+{
+    "name": "elao/form-translation-bundle",
+    "type": "symfony-bundle",
+    "description": "Generate translation key for forms",
+    "keywords": ["elao", "form", "translation"],
+    "homepage": "https://github.com/Elao/ElaoFormTranslationBundle",
+    "licence": "MIT",
+    "authors": [
+        {
+            "name": "Elao",
+            "homepage": "http://www.elao.com"
+        },
+        {
+            "name": "Thomas Jarrand",
+            "homepage": "https://github.com/Tom32i"
+        }
+    ],
+    "require": {
+        "php":                      ">=5.3.4",
+        "symfony/framework-bundle": "~2.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "Elao\\Bundle\\FormTranslationBundle": "."
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "target-dir": "Elao/Bundle/FormTranslationBundle"
+}
