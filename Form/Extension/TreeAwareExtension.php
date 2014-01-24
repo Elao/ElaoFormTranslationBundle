@@ -8,7 +8,7 @@
  * @author Elao <contact@elao.com>
  */
 
-namespace Elao\Bundle\FormTranslationBundle\Form\Extension\Tree;
+namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
