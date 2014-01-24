@@ -111,7 +111,7 @@ class RegisterType extends AbstractType
 
 #### Global configuration key:
 
-If you want to generate keys for all your labels you can set the option `auto_generate_label` to `true` :
+If you want to generate keys for all your labels you can set the option `auto_generate` to `true` :
 
     elao_form_translation:
         auto_generate: true
@@ -151,7 +151,7 @@ elao_form_translation:
     enabled: true
 
     # Generate translation keys for all missing labels
-    auto_generate_label: false
+    auto_generate: false
 
     # Customize available keys
     keys:
