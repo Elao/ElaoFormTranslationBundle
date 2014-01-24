@@ -44,7 +44,7 @@ class ElaoFormTranslationExtension extends Extension
     }
 
     /**
-     *  Load Tree configuration
+     * Load Tree configuration
      *
      * @param ContainerBuilder $container The container builder
      * @param LoaderInterface  $loader    The loader
