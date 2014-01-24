@@ -44,13 +44,15 @@ class ElaoFormTranslationExtension extends Extension
     }
 
     /**
-     * Load Tree configuration
+     *  Load Tree configuration
      *
-     * @param  array $config [description]
+     * @param ContainerBuilder $container The container builder
+     * @param LoaderInterface  $loader    The loader
+     * @param array            $config    An array of config keys
      */
     private function loadTreeConfig(ContainerBuilder $container, LoaderInterface $loader, array $config)
     {
-        /* Set up the Key Builder */
+        // Set up the Key Builder
         $container
             ->getDefinition('elao.form_translation.key_builder')
             ->addArgument($config['blocks']['separator'])
@@ -58,14 +60,14 @@ class ElaoFormTranslationExtension extends Extension
             ->addArgument($config['blocks']['children'])
             ->addArgument($config['blocks']['prototype']);
 
-        /* Set up the Tree Aware extension */
+        // Set up the Tree Aware extension
         $container
             ->getDefinition('elao.form_translation.extension.tree_aware_extension')
             ->addMethodCall('setAutoGenerate', array($config['auto_generate']))
             ->addMethodCall('setTreebuilder', array(new Reference('elao.form_translation.tree_builder')))
             ->addMethodCall('setKeybuilder', array(new Reference('elao.form_translation.key_builder')));
 
-        /* Set up the Form extensions */
+        // Set up the Form extensions
         $container
             ->getDefinition('elao.form_translation.extension.form_type_extension')
             ->addMethodCall('setKeys', array($config['keys']['form']));

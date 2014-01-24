@@ -32,7 +32,7 @@ class FormTreeBuilder
     /**
      * Get the full tree for a given view
      *
-     * @param FormView $view
+     * @param FormView $view The FormView
      *
      * @return array
      */
@@ -52,7 +52,7 @@ class FormTreeBuilder
     /**
      * Set form type that should not be treated as having children
      *
-     * @param array $types
+     * @param array $types An array of types
      */
     public function setNoChildren(array $types)
     {
@@ -78,7 +78,7 @@ class FormTreeBuilder
     /**
      * Test if the given form view has children with labels
      *
-     * @param FormView $view
+     * @param FormView $view The FormView
      *
      * @return boolean
      */
@@ -100,7 +100,7 @@ class FormTreeBuilder
     /**
      * Test if the given form view is a collection
      *
-     * @param FormView $view
+     * @param FormView $view The FormView
      *
      * @return boolean
      */
@@ -116,7 +116,7 @@ class FormTreeBuilder
     /**
      * Test if the given form view is a prototype in a collection
      *
-     * @param FormView $view
+     * @param FormView $view The FormView
      *
      * @return boolean
      */

@@ -53,10 +53,10 @@ class FormKeyBuilder
     /**
      * Constructor
      *
-     * @param string $separator
-     * @param string $root
-     * @param string $children
-     * @param string $prototype
+     * @param string $separator Separator te be used between nodes
+     * @param string $root      Prefix at the root of the key
+     * @param string $children  Prefix for children nodes
+     * @param string $prototype Prefix for prototype nodes
      */
     public function __construct($separator = ".", $root = "form", $children = "children", $prototype = "prototype")
     {

@@ -52,7 +52,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Enable or disable automatic generation of missing labels
      *
-     * @param boolean $enabled
+     * @param boolean $enabled The Boolean
      */
     public function setAutoGenerate($enabled)
     {
@@ -62,7 +62,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Set Tree Builder
      *
-     * @param FormTreebuilder $treeBuilder
+     * @param FormTreebuilder $treeBuilder The FormKeyBuilder
      */
     public function setTreebuilder(FormTreebuilder $treeBuilder = null)
     {
@@ -72,7 +72,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Set Key Builder
      *
-     * @param FormKeybuilder $keyBuilder
+     * @param FormKeybuilder $keyBuilder The FormKeyBuilder
      */
     public function setKeybuilder(FormKeybuilder $keyBuilder = null)
     {
@@ -82,7 +82,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Set buildable keys
      *
-     * @param array $keys
+     * @param array $keys Array of keys
      */
     public function setKeys(array $keys)
     {
@@ -106,8 +106,8 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Generate the key for the given view field
      *
-     * @param FormView $view
-     * @param string $key
+     * @param FormView $view The form view
+     * @param string $key a key
      * @param string $value
      */
     protected function generateKey(FormView &$view, $key, $value)

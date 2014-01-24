@@ -42,7 +42,7 @@ class FormTree implements \Iterator, \Countable
 	/**
 	 * Add a parent node to the beginning of the tree
 	 *
-	 * @param FormTreeNode $node
+	 * @param FormTreeNode $node The node
 	 *
 	 * @return int The new number of elements in the Tree
 	 */
@@ -54,7 +54,7 @@ class FormTree implements \Iterator, \Countable
 	/**
 	 * Add a child node to the end of the tree
 	 *
-	 * @param FormTreeNode $node
+	 * @param FormTreeNode $node The node
 	 *
 	 * @return int The new number of elements in the Tree
 	 */

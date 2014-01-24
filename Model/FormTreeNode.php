@@ -48,10 +48,10 @@ class FormTreeNode
 	/**
 	 * Constructor
 	 *
-	 * @param string  $name
-	 * @param boolean $children
-	 * @param boolean $collection
-	 * @param boolean $prototype
+	 * @param string  $name       The node's name
+	 * @param boolean $children   Weither or not the node has labeled children
+	 * @param boolean $collection Is the node a collection
+	 * @param boolean $prototype  Is the node a prototype
 	 */
 	public function __construct($name, $children = false, $collection = false, $prototype = false)
 	{
