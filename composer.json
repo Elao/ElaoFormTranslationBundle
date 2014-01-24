@@ -4,7 +4,7 @@
     "description": "Generate translation key for forms",
     "keywords": ["elao", "form", "translation"],
     "homepage": "https://github.com/Elao/ElaoFormTranslationBundle",
-    "licence": "MIT",
+    "license": "MIT",
     "authors": [
         {
             "name": "Elao",
