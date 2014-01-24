@@ -40,39 +40,32 @@ class Configuration implements ConfigurationInterface
                     ->info('<info>Customize available keys</info>')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->arrayNode('form')
-                            ->useAttributeAsKey('key')
-                            ->prototype('array')
-                                ->children()
-                                    ->scalarNode('value')
-                                        ->isRequired()
-                                    ->end()
-                                ->end()
-                            ->end()
-                            ->defaultValue(array('label' => "label", 'help' => "help"))
-                        ->end()
-                        ->arrayNode('collection')
-                            ->useAttributeAsKey('key')
-                            ->prototype('array')
-                                ->children()
-                                    ->scalarNode('value')
-                                        ->isRequired()
-                                    ->end()
-                                ->end()
-                            ->end()
-                            ->defaultValue(array('label_add' => "label_add", 'label_delete' => "label_delete"))
-                        ->end()
-                        ->arrayNode('choice')
-                            ->useAttributeAsKey('key')
-                            ->prototype('array')
-                                ->children()
-                                    ->scalarNode('value')
-                                        ->isRequired()
-                                    ->end()
-                                ->end()
-                            ->end()
-                            ->defaultValue(array('empty_value' => "empty_value"))
-                        ->end()
+                        ->append(
+                            $this->addKeysConfig(
+                                'form',
+                                array(
+                                    'label' => "label",
+                                    'help'  => "help",
+                                )
+                            )
+                        )
+                        ->append(
+                            $this->addKeysConfig(
+                                'collection',
+                                array(
+                                    'label_add'    => "label_add",
+                                    'label_delete' => "label_delete",
+                                )
+                            )
+                        )
+                        ->append(
+                            $this->addKeysConfig(
+                                'choice',
+                                array(
+                                    'empty_value' => "empty_value",
+                                )
+                            )
+                        )
                     ->end()
                 ->end()
                 ->arrayNode('blocks')
@@ -100,5 +93,26 @@ class Configuration implements ConfigurationInterface
             ->end();
 
         return $treeBuilder;
+    }
+
+    /**
+     * Add Keys Config
+     *
+     * @param NodeInterface $node
+     * @param string $key
+     * @param array $default
+     */
+    public function addKeysConfig($key, $default = array())
+    {
+        $builder = new TreeBuilder();
+        $node    = $builder->root($key);
+
+        $node
+            ->prototype('scalar')
+                ->isRequired()
+            ->end()
+            ->defaultValue($default);
+
+        return $node;
     }
 }
