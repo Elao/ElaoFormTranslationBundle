@@ -30,8 +30,6 @@ class FormTypeExtension extends TreeAwareExtension
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array('help' => false));
-
         if ($this->autoGenerate) {
             $resolver->replaceDefaults(array('label' => true));
         }

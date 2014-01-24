@@ -30,6 +30,22 @@ class CollectionTypeExtension extends TreeAwareExtension
     /**
      * {@inheritdoc}
      */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        if ($this->autoGenerate) {
+            $options = array('label_add', 'label_delete');
+
+            foreach ($options as $option) {
+                if ($resolver->isKnown($option)) {
+                    $resolver->replaceDefaults(array($option => true));
+                }
+            }
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
         if ($this->treeBuilder && $this->keyBuilder && $options['allow_add'] && $options['prototype']) {
