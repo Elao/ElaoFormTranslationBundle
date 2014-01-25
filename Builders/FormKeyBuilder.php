@@ -8,7 +8,7 @@
  * @author Elao <contact@elao.com>
  */
 
-namespace Elao\Bundle\FormTranslationBundle\Service;
+namespace Elao\Bundle\FormTranslationBundle\Builders;
 
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
