@@ -31,11 +31,13 @@ abstract class FormTranslationTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function getTypeExtensions()
     {
-        return array(
+        $extensions = array(
             new Extension\ButtonTypeExtension(),
             new Extension\ChoiceTypeExtension(),
             new Extension\CollectionTypeExtension(),
             new Extension\FormTypeExtension(),
         );
+
+        return $extensions;
     }
 }
