@@ -1,6 +1,8 @@
 ElaoFormTranslationBundle
 =========================
 
+[![Build Status](http://api.travis-ci.org/Elao/ElaoFormTranslationBundle.png)](http://travis-ci.org/Elao/ElaoFormTranslationBundle)
+
 Description:
 --------------
 
