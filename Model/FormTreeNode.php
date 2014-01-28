@@ -25,21 +25,21 @@ class FormTreeNode
     private $name;
 
     /**
-     * Weither or not the node has labeled children.
+     * Whether or not the node has labeled children.
      *
      * @var boolean
      */
     private $children;
 
     /**
-     * Weither or not the node is a collection.
+     * Whether or not the node is a collection.
      *
      * @var boolean
      */
     private $collection;
 
     /**
-     * Weither or not the node is a prototype.
+     * Whether or not the node is a prototype.
      *
      * @var boolean
      */
@@ -49,7 +49,7 @@ class FormTreeNode
      * Constructor
      *
      * @param string  $name       The node's name
-     * @param boolean $children   Weither or not the node has labeled children
+     * @param boolean $children   Whether or not the node has labeled children
      * @param boolean $collection Is the node a collection
      * @param boolean $prototype  Is the node a prototype
      */
