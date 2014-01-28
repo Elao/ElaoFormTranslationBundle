@@ -43,7 +43,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     protected $keys;
 
     /**
-     * Wheither automatic generation of missing keys is enabled or not
+     * Whether automatic generation of missing keys is enabled or not
      *
      * @var boolean
      */

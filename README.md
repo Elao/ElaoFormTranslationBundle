@@ -158,7 +158,7 @@ elao_form_translation:
         children:  false
         separator: "_"
 ```
-Wich would generate that kind of keys:
+Which would generate that kind of keys:
 
     # (parent_field_name)[separator](field_name)[separator][key]
     register_name_label

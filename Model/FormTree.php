@@ -110,7 +110,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
     }
 
     /**
-     * Return weither or not the current position is valid
+     * Return whether or not the current position is valid
      *
      * @return int
      */
@@ -120,7 +120,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
     }
 
     /**
-     * Return weither or not the given offset exists
+     * Return whether or not the given offset exists
      *
      * @param mixed $offset
      *

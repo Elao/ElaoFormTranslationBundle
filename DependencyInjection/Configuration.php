@@ -98,7 +98,6 @@ class Configuration implements ConfigurationInterface
     /**
      * Add Keys Config
      *
-     * @param NodeInterface $node
      * @param string $key
      * @param array $default
      */
