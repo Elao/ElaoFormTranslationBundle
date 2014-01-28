@@ -6,8 +6,6 @@ ElaoFormTranslationBundle
 Description:
 --------------
 
-__[WIP] This bundle is currently in developpement__
-
 This bundle provides a nice way of generating translation keys for form fields in a "logic" way.
 It's used mainly to generate automatic labels on fields but can be use to built any key.
 
