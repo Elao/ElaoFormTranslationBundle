@@ -8,39 +8,40 @@ Description:
 
 __[WIP] This bundle is currently in developpement__
 
-This bundle provides a nice way of generating translation keys for form fields in a way you can easily deduce them.
+This bundle provides a nice way of generating translation keys for form fields in a "logic" way.
 It's used mainly to generate automatic labels on fields but can be use to built any key.
 
-__For example, in a form `RegisterType` named "register" the key for its field "name" would be `form.register.name.label`.__
+__For example, in a form `RegisterType` named "register" the key for its field "name" would be `form.register.children.name.label`.__
 
-Another more advanced example would be a field "emails" which is a `collection` of `text` intputs, it'll generate :
+Another more advanced example would be a field "emails" which is a `collection` of `text` intputs, it'll generate:
 
-- `form.register.emails.label`
-- `form.register.emails.label_add`
-- `form.register.emails.label_delete`
-- `form.register.emails.children.prototype.label`
+- `form.register.children.emails.label`
+- `form.register.children.emails.label_add`
+- `form.register.children.emails.label_delete`
+- `form.register.children.emails.children.prototype.label`
 
-Or in `yml` :
+Or in `yml`:
 
 ``` yml
 form:
     register:
-        emails:
-            label:          # add your trans for the fieldset ex: Email
-            label_add:      # add your trans for add button ex: Add an email
-            label_delete:   # add your trans for remove button ex: Remove an email
-            children:
-                prototype:
-                    label:  # add your trans for the label of one email field ex: Email address
+        children:
+            emails:
+                label:          # add your trans for the fieldset ex: Email
+                label_add:      # add your trans for add button ex: Add an email
+                label_delete:   # add your trans for remove button ex: Remove an email
+                children:
+                    prototype:
+                        label:  # add your trans for the label of one email field ex: Email address
 ```
 
-_Note : The keys will only be generated and won't be dumped when you use `translation:extract`._
+_Note: The keys will only be generated on runtime and won't be dumped when you use `translation:update` yet (we're working on it)._
 
 Installation:
 --------------
 
 Add ElaoFormTranslationBundle in your composer.json:
-``` js
+``` json
 {
     "require": {
         "elao/form-translation-bundle": "dev-master"
@@ -72,7 +73,7 @@ public function registerBundles()
 How to use it:
 --------------
 
-In order to generate automatically translation keys, you have 2 options :
+In order to generate automatically translation keys, you have 2 options:
 
 #### Per field generation:
 
@@ -91,7 +92,7 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('name', null, array(
-                'label' => true // Will generate : "form.register.name.label"
+                'label' => true // Will generate: "form.register.children.name.label"
             ));
             ->add('email', null, array(
                 'label' => false // Will NOT generate a `<label>` in the `HTML`
@@ -113,7 +114,7 @@ class RegisterType extends AbstractType
 
 #### Global configuration key:
 
-If you want to generate keys for all your labels you can set the option `auto_generate` to `true` :
+If you want to generate keys for all your labels you can set the option `auto_generate` to `true`:
 
     elao_form_translation:
         auto_generate: true
@@ -128,28 +129,48 @@ Customization and configuration:
 
 #### Customize the keys:
 
-If for a reason or another you need to customize the key for example instead of using "form.register.name.label" you want to use "my_custom_key.register.name.label", you'll have to update the `root` configuration key under `blocks` key.
+Keys are built following this pattern:
+
+    [root][separator](parent_field_name)[separator][children][separator](field_name)[key]
+
+You can customize (and remove) any of this token to change the way keys are built:
 
 ``` yml
 elao_form_translation:
     blocks:
-        # Prefix for children nodes
+        # Prefix for children nodes (string|false)
         children:   "children"
 
-        # Prefix for prototype nodes
+        # Prefix for prototype nodes (string|false)
         prototype:  "prototype"
 
-        # Prefix at the root of the key
+        # Prefix at the root of the key (string|false)
         root:       "form"
 
-        # Separator te be used between nodes
+        # Separator te be used between nodes (string|false)
         separator:  "."
 ```
+
+For example, if you just need simple keys you could do with the following configuration:
+
+``` yml
+elao_form_translation:
+    blocks:
+        root:      false
+        children:  false
+        separator: "_"
+```
+Wich would generate that kind of keys:
+
+    # (parent_field_name)[separator](field_name)[separator][key]
+    register_name_label
 
 #### Default configuration:
 
 ``` yml
 elao_form_translation:
+
+    # Can be disabled
     enabled: true
 
     # Generate translation keys for all missing labels
