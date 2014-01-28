@@ -13,8 +13,8 @@ namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\AbstractTypeExtension;
-use Elao\Bundle\FormTranslationBundle\Service\FormTreebuilder;
-use Elao\Bundle\FormTranslationBundle\Service\FormKeybuilder;
+use Elao\Bundle\FormTranslationBundle\Builders\FormTreebuilder;
+use Elao\Bundle\FormTranslationBundle\Builders\FormKeybuilder;
 
 /**
  * Tree Aware Extension
