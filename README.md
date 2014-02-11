@@ -11,7 +11,7 @@ It's used mainly to generate automatic labels on fields but can be use to built 
 
 __For example, in a form `RegisterType` named "register" the key for its field "name" would be `form.register.children.name.label`.__
 
-Another more advanced example would be a field "emails" which is a `collection` of `text` intputs, it'll generate:
+Another more advanced example would be a field "emails" which is a `collection` of `text` inputs, it'll generate:
 
 - `form.register.children.emails.label`
 - `form.register.children.emails.label_add`
