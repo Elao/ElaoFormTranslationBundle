@@ -42,7 +42,7 @@ Add ElaoFormTranslationBundle in your composer.json:
 ``` json
 {
     "require": {
-        "elao/form-translation-bundle": "dev-master"
+        "elao/form-translation-bundle": "1.0.*"
     }
 }
 ```
