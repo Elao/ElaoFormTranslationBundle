@@ -63,7 +63,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new Elao\FormTranslationBundle\ElaoFormTranslationBundle(),
+        new Elao\Bundle\FormTranslationBundle\ElaoFormTranslationBundle(),
     );
 }
 ```
