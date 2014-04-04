@@ -38,7 +38,7 @@ _Note: The keys will only be generated on runtime and won't be dumped when you u
 Installation:
 --------------
 
-Add ElaoFormTranslationBundle in your composer.json:
+Add ElaoFormTranslationBundle to your composer.json:
 ``` json
 {
     "require": {
@@ -47,7 +47,7 @@ Add ElaoFormTranslationBundle in your composer.json:
 }
 ```
 
-Now tell composer to download the bundle by running the command:
+Now download the bundle by running the command:
 
 ``` bash
 $ php composer.phar update elao/form-translation-bundle
