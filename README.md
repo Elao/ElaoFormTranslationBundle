@@ -7,7 +7,7 @@ Description:
 --------------
 
 This bundle provides a nice way of generating translation keys for form fields in a "logic" way.
-It's used mainly to generate automatic labels on fields but can be use to built any key.
+It is used mainly to generate automatic labels on fields but can be use to build any key.
 
 __For example, in a form `RegisterType` named "register" the key for its field "name" would be `form.register.children.name.label`.__
 
@@ -33,7 +33,7 @@ form:
                         label:  # add your trans for the label of one email field ex: Email address
 ```
 
-_Note: The keys will only be generated on runtime and won't be dumped when you use `translation:update` yet (we're working on it)._
+_Note: The keys will only be generated at runtime and won't be dumped when you use `translation:update` yet (we're working on it)._
 
 Installation:
 --------------
@@ -53,7 +53,7 @@ Now download the bundle by running the command:
 $ php composer.phar update elao/form-translation-bundle
 ```
 
-Enable the bundle in the kernel:
+Register the bundle in the kernel:
 
 ``` php
 <?php
@@ -71,7 +71,7 @@ public function registerBundles()
 How to use it:
 --------------
 
-In order to generate automatically translation keys, you have 2 options:
+In order to generate translation keys automatically, you have 2 options:
 
 #### Per field generation:
 
@@ -96,7 +96,7 @@ class RegisterType extends AbstractType
                 'label' => false // Will NOT generate a `<label>` in the `HTML`
             ));
             ->add('email', null, array(
-                'label' => 'my.custom.key' // Default behaviour
+                'label' => 'my.custom.key' // Default behavior
             ));
     }
 
@@ -117,9 +117,9 @@ If you want to generate keys for all your labels you can set the option `auto_ge
     elao_form_translation:
         auto_generate: true
 
-This will set default label value to `true` so keys will be generated for every labels.
+This will set default label value to `true` so keys will be generated for every label.
 
-If you need to override this behaviour, you can still provide a `label` key for your field in order to use your translation key. In this case, no keys will be generated.
+If you need to override this behavior, you can still provide a `label` key for your field in order to use your translation key. In this case, no keys will be generated.
 
 
 Customization and configuration:
@@ -131,7 +131,7 @@ Keys are built following this pattern:
 
     [root][separator](parent_field_name)[separator][children][separator](field_name)[key]
 
-You can customize (and remove) any of this token to change the way keys are built:
+You can customize (and remove) any of these tokens to change the way keys are built:
 
 ``` yml
 elao_form_translation:
