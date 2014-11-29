@@ -36,8 +36,8 @@ class CollectionTypeExtension extends TreeAwareExtension
             $options = array('label_add', 'label_delete');
 
             foreach ($options as $option) {
-                if ($resolver->isKnown($option)) {
-                    $resolver->replaceDefaults(array($option => true));
+                if (!$resolver->isDefined($option)) {
+                    $resolver->setDefault($option, true);
                 }
             }
         }

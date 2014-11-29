@@ -10,8 +10,6 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
 /**
  * Choice Type Extension
  */
