@@ -30,7 +30,7 @@ class ButtonTypeExtension extends TreeAwareExtension
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        if ($this->autoGenerate && !$resolver->isDefined('label')) {
+        if ($this->autoGenerate) {
             $resolver->setDefault('label', true);
         }
     }
