@@ -177,12 +177,12 @@ elao_form_translation:
     # Customize available keys
     keys:
         form:
-            label:  "label"
-            help:   "help"
+            '[label]':  "label"
+            '[help]':   "help"
             # Add yours ...
         collection:
-            label_add:      "label_add"
-            label_delete:   "label_delete"
+            '[label_add]':      "label_add"
+            '[label_delete]':   "label_delete"
             # Add yours ...
 
     # Customize the ways keys are built

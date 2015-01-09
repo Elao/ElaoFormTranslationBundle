@@ -39,34 +39,34 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('keys')
                     ->info('<info>Customize available keys</info>')
                     ->addDefaultsIfNotSet()
-                    ->children()
-                        ->append(
-                            $this->addKeysConfig(
-                                'form',
-                                array(
-                                    'label' => "label",
-                                    'help'  => "help",
-                                )
+                ->children()
+                    ->append(
+                        $this->addKeysConfig(
+                            'form',
+                            array(
+                                '[label]' => "label",
+                                '[help]'  => "help",
                             )
                         )
-                        ->append(
-                            $this->addKeysConfig(
-                                'collection',
-                                array(
-                                    'label_add'    => "label_add",
-                                    'label_delete' => "label_delete",
-                                )
+                    )
+                    ->append(
+                        $this->addKeysConfig(
+                            'collection',
+                            array(
+                                '[label_add]'    => "label_add",
+                                '[label_delete]' => "label_delete",
                             )
                         )
-                        ->append(
-                            $this->addKeysConfig(
-                                'choice',
-                                array(
-                                    'empty_value' => "empty_value",
-                                )
+                    )
+                    ->append(
+                        $this->addKeysConfig(
+                            'choice',
+                            array(
+                                '[empty_value]' => "empty_value",
                             )
                         )
-                    ->end()
+                    )
+                ->end()
                 ->end()
                 ->arrayNode('blocks')
                     ->info('<info>Customize the ways keys are built</info>')

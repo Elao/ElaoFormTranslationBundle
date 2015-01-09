@@ -15,6 +15,8 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Elao\Bundle\FormTranslationBundle\Builders\FormTreebuilder;
 use Elao\Bundle\FormTranslationBundle\Builders\FormKeybuilder;
+use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**
  * Tree Aware Extension
@@ -48,6 +50,21 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
      * @var boolean
      */
     protected $autoGenerate = false;
+
+    /**
+     * PropertyAccessor
+     *
+     * @var PropertyAccessorInterface
+     */
+    protected $propertyAccessor;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
+    }
 
     /**
      * Enable or disable automatic generation of missing labels
@@ -96,7 +113,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     {
         if ($this->treeBuilder && $this->keyBuilder) {
             foreach ($this->keys as $key => $value) {
-                if (isset($options[$key]) && $options[$key] === true) {
+                if ($this->propertyAccessor->isReadable($options, $key) && $this->propertyAccessor->getValue($options, $key) === true) {
                     $this->generateKey($view, $key, $value);
                 }
             }
@@ -116,6 +133,6 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
             $view->vars['tree'] = $this->treeBuilder->getTree($view);
         }
 
-        $view->vars[$key] = $this->keyBuilder->buildKeyFromTree($view->vars['tree'], $value);
+        $this->propertyAccessor->setValue($view->vars, $key, $this->keyBuilder->buildKeyFromTree($view->vars['tree'], $value));
     }
 }
