@@ -10,6 +10,7 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -28,10 +29,18 @@ class ButtonTypeExtension extends TreeAwareExtension
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         if ($this->autoGenerate) {
             $resolver->setDefault('label', true);
         }
+    }
+
+    /**
+     * for Sf < 2.7
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $this->configureOptions($resolver);
     }
 }
