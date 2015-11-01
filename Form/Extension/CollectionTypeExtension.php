@@ -12,6 +12,7 @@ namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -30,12 +31,20 @@ class CollectionTypeExtension extends TreeAwareExtension
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         if ($this->autoGenerate) {
             $resolver->setDefault('label_add', true);
             $resolver->setDefault('label_delete', true);
         }
+    }
+
+    /**
+     * for Sf < 2.7
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $this->configureOptions($resolver);
     }
 
     /**
