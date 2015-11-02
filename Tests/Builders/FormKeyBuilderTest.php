@@ -22,7 +22,7 @@ class FormKeyBuilderTest extends FormTranslationTestCase
 
         $view  = $form->createView();
         $tree  = $treeBuilder->getTree($view['bar']);
-        $label = $keyBuilder->buildKeyFromTree($tree , 'label');
+        $label = $keyBuilder->buildKeyFromTree($tree, 'label');
 
         $this->assertEquals('form.foo.children.bar.label', $label);
     }

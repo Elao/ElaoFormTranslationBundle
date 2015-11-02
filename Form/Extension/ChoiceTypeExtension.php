@@ -10,6 +10,8 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 /**
  * Choice Type Extension
  */
@@ -20,6 +22,6 @@ class ChoiceTypeExtension extends TreeAwareExtension
      */
     public function getExtendedType()
     {
-        return 'choice';
+        return ChoiceType::class;
     }
 }
