@@ -10,6 +10,7 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -24,7 +25,7 @@ class ButtonTypeExtension extends TreeAwareExtension
      */
     public function getExtendedType()
     {
-        return ButtonType::class;
+        return method_exists(AbstractType::class, 'getBlockPrefix') ? ButtonType::class : 'button';
     }
 
     /**

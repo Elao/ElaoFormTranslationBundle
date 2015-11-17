@@ -4,6 +4,7 @@ namespace Elao\Bundle\FormTranslationBundle\Tests\Builders;
 
 use Elao\Bundle\FormTranslationBundle\Builders\FormTreeBuilder;
 use Elao\Bundle\FormTranslationBundle\Test\FormTranslationTestCase;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -16,9 +17,9 @@ class FormTreeBuilderTest extends FormTranslationTestCase
     public function testSimpleTreeBuilder()
     {
         $treeBuilder = new FormTreeBuilder();
-        $form        = $this->factory->createNamed('foo', FormType::class);
+        $form        = $this->factory->createNamed('foo', method_exists(AbstractType::class, 'getBlockPrefix') ? FormType::class : 'form');
 
-        $form->add('bar', TextType::class);
+        $form->add('bar', method_exists(AbstractType::class, 'getBlockPrefix') ? TextType::class : 'text');
 
         $formView = $form->createView();
         $fooTree  = $treeBuilder->getTree($formView);
@@ -41,13 +42,13 @@ class FormTreeBuilderTest extends FormTranslationTestCase
     public function testCollectionTreeBuilder()
     {
         $treeBuilder = new FormTreeBuilder();
-        $form        = $this->factory->createNamed('foo', FormType::class);
+        $form        = $this->factory->createNamed('foo', method_exists(AbstractType::class, 'getBlockPrefix') ? FormType::class : 'form');
 
         $form->add(
             'bar',
-            CollectionType::class,
+            method_exists(AbstractType::class, 'getBlockPrefix') ? CollectionType::class : 'collection',
             array(
-                'entry_type'   => TextType::class,
+                'entry_type'   => method_exists(AbstractType::class, 'getBlockPrefix') ? TextType::class : 'text',
                 'allow_add'    => true,
                 'allow_delete' => true,
             )
