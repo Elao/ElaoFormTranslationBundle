@@ -10,6 +10,7 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 /**
@@ -22,6 +23,6 @@ class ChoiceTypeExtension extends TreeAwareExtension
      */
     public function getExtendedType()
     {
-        return ChoiceType::class;
+        return method_exists(AbstractType::class, 'getBlockPrefix') ? ChoiceType::class : 'choice';
     }
 }

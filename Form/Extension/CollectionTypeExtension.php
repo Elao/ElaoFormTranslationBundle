@@ -10,6 +10,7 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
@@ -26,7 +27,7 @@ class CollectionTypeExtension extends TreeAwareExtension
      */
     public function getExtendedType()
     {
-        return CollectionType::class;
+        return method_exists(AbstractType::class, 'getBlockPrefix') ? CollectionType::class : 'collection';
     }
 
     /**

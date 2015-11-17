@@ -10,6 +10,7 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -24,7 +25,7 @@ class FormTypeExtension extends TreeAwareExtension
      */
     public function getExtendedType()
     {
-        return FormType::class;
+        return method_exists(AbstractType::class, 'getBlockPrefix') ? FormType::class : 'form';
     }
 
     /**

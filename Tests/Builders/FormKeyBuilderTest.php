@@ -2,9 +2,10 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Tests\Builders;
 
-use Elao\Bundle\FormTranslationBundle\Test\FormTranslationTestCase;
-use Elao\Bundle\FormTranslationBundle\Builders\FormTreeBuilder;
 use Elao\Bundle\FormTranslationBundle\Builders\FormKeyBuilder;
+use Elao\Bundle\FormTranslationBundle\Builders\FormTreeBuilder;
+use Elao\Bundle\FormTranslationBundle\Test\FormTranslationTestCase;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,9 +20,9 @@ class FormKeyBuilderTest extends FormTranslationTestCase
         $treeBuilder = new FormTreeBuilder();
         $keyBuilder  = new FormKeyBuilder();
 
-        $form = $this->factory->createNamed('foo', FormType::class);
+        $form = $this->factory->createNamed('foo', method_exists(AbstractType::class, 'getBlockPrefix') ? FormType::class : 'form');
 
-        $form->add('bar', TextType::class);
+        $form->add('bar', method_exists(AbstractType::class, 'getBlockPrefix') ? TextType::class : 'text');
 
         $view  = $form->createView();
         $tree  = $treeBuilder->getTree($view['bar']);
@@ -38,13 +39,13 @@ class FormKeyBuilderTest extends FormTranslationTestCase
         $treeBuilder = new FormTreeBuilder();
         $keyBuilder  = new FormKeyBuilder();
 
-        $form = $this->factory->createNamed('foo', FormType::class);
+        $form = $this->factory->createNamed('foo', method_exists(AbstractType::class, 'getBlockPrefix') ? FormType::class : 'form');
 
         $form->add(
             'bar',
-            CollectionType::class,
+            method_exists(AbstractType::class, 'getBlockPrefix') ? CollectionType::class : 'collection',
             array(
-                'entry_type'   => TextType::class,
+                'entry_type'   => method_exists(AbstractType::class, 'getBlockPrefix') ? TextType::class : 'text',
                 'allow_add'    => true,
                 'allow_delete' => true,
             )
