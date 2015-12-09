@@ -23,6 +23,6 @@ class ChoiceTypeExtension extends TreeAwareExtension
      */
     public function getExtendedType()
     {
-        return method_exists(AbstractType::class, 'getBlockPrefix') ? ChoiceType::class : 'choice';
+        return ChoiceType::class;
     }
 }

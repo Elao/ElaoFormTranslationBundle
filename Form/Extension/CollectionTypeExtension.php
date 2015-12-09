@@ -27,7 +27,7 @@ class CollectionTypeExtension extends TreeAwareExtension
      */
     public function getExtendedType()
     {
-        return method_exists(AbstractType::class, 'getBlockPrefix') ? CollectionType::class : 'collection';
+        return CollectionType::class;
     }
 
     /**
@@ -39,14 +39,6 @@ class CollectionTypeExtension extends TreeAwareExtension
             $resolver->setDefault('label_add', true);
             $resolver->setDefault('label_delete', true);
         }
-    }
-
-    /**
-     * for Sf < 2.7
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
     }
 
     /**

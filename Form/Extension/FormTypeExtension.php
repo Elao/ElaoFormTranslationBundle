@@ -25,7 +25,7 @@ class FormTypeExtension extends TreeAwareExtension
      */
     public function getExtendedType()
     {
-        return method_exists(AbstractType::class, 'getBlockPrefix') ? FormType::class : 'form';
+        return FormType::class;
     }
 
     /**
@@ -36,13 +36,5 @@ class FormTypeExtension extends TreeAwareExtension
         if ($this->autoGenerate) {
             $resolver->setDefault('label', true);
         }
-    }
-
-    /**
-     * for Sf < 2.7
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
     }
 }
