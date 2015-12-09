@@ -15,19 +15,19 @@
         <service id="elao.form_translation.extension.tree_aware_extension" abstract="true" />
 
         <service id="elao.form_translation.extension.form_type_extension" class="%elao.form_translation.extension.form_type_extension.class%" parent="elao.form_translation.extension.tree_aware_extension">
-            <tag name="form.type_extension" alias="form" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
         </service>
 
         <service id="elao.form_translation.extension.collection_type_extension" class="%elao.form_translation.extension.collection_type_extension.class%" parent="elao.form_translation.extension.tree_aware_extension">
-            <tag name="form.type_extension" alias="collection" extended-type="Symfony\Component\Form\Extension\Core\Type\CollectionType"/>
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\CollectionType"/>
         </service>
 
         <service id="elao.form_translation.extension.button_type_extension" class="%elao.form_translation.extension.button_type_extension.class%" parent="elao.form_translation.extension.tree_aware_extension">
-            <tag name="form.type_extension" alias="button" extended-type="Symfony\Component\Form\Extension\Core\Type\ButtonType"/>
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\ButtonType"/>
         </service>
 
         <service id="elao.form_translation.extension.choice_type_extension" class="%elao.form_translation.extension.choice_type_extension.class%" parent="elao.form_translation.extension.tree_aware_extension">
-            <tag name="form.type_extension" alias="choice" extended-type="Symfony\Component\Form\Extension\Core\Type\ChoiceType"/>
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\ChoiceType"/>
         </service>
     </services>
 </container>
