@@ -12,6 +12,8 @@ matrix:
       env: SYMFONY_VERSION=2.8.*@dev
     - php: 5.6
       env: SYMFONY_VERSION="3.0.*@dev"
+    - php: 7.0
+      env: SYMFONY_VERSION="3.0.*@dev"
 
 sudo: false
 
@@ -26,4 +28,4 @@ before_install:
 install: composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
 script:
-  - phpunit --coverage-text
+  - vendor/bin/phpunit --coverage-text
