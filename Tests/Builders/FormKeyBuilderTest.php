@@ -2,9 +2,13 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Tests\Builders;
 
-use Elao\Bundle\FormTranslationBundle\Test\FormTranslationTestCase;
-use Elao\Bundle\FormTranslationBundle\Builders\FormTreeBuilder;
 use Elao\Bundle\FormTranslationBundle\Builders\FormKeyBuilder;
+use Elao\Bundle\FormTranslationBundle\Builders\FormTreeBuilder;
+use Elao\Bundle\FormTranslationBundle\Test\FormTranslationTestCase;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class FormKeyBuilderTest extends FormTranslationTestCase
 {
@@ -16,13 +20,13 @@ class FormKeyBuilderTest extends FormTranslationTestCase
         $treeBuilder = new FormTreeBuilder();
         $keyBuilder  = new FormKeyBuilder();
 
-        $form = $this->factory->createNamed('foo', 'form');
+        $form = $this->factory->createNamed('foo', FormType::class);
 
-        $form->add('bar', 'text');
+        $form->add('bar', TextType::class);
 
         $view  = $form->createView();
         $tree  = $treeBuilder->getTree($view['bar']);
-        $label = $keyBuilder->buildKeyFromTree($tree , 'label');
+        $label = $keyBuilder->buildKeyFromTree($tree, 'label');
 
         $this->assertEquals('form.foo.children.bar.label', $label);
     }
@@ -35,13 +39,13 @@ class FormKeyBuilderTest extends FormTranslationTestCase
         $treeBuilder = new FormTreeBuilder();
         $keyBuilder  = new FormKeyBuilder();
 
-        $form = $this->factory->createNamed('foo', 'form');
+        $form = $this->factory->createNamed('foo', FormType::class);
 
         $form->add(
             'bar',
-            'collection',
+            CollectionType::class,
             array(
-                'type'         => 'text',
+                'entry_type'   => TextType::class,
                 'allow_add'    => true,
                 'allow_delete' => true,
             )

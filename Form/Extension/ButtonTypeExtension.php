@@ -10,6 +10,8 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -23,7 +25,7 @@ class ButtonTypeExtension extends TreeAwareExtension
      */
     public function getExtendedType()
     {
-        return 'button';
+        return ButtonType::class;
     }
 
     /**
@@ -34,13 +36,5 @@ class ButtonTypeExtension extends TreeAwareExtension
         if ($this->autoGenerate) {
             $resolver->setDefault('label', true);
         }
-    }
-
-    /**
-     * for Sf < 2.7
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
     }
 }

@@ -10,6 +10,8 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -25,7 +27,7 @@ class CollectionTypeExtension extends TreeAwareExtension
      */
     public function getExtendedType()
     {
-        return 'collection';
+        return CollectionType::class;
     }
 
     /**
@@ -40,20 +42,11 @@ class CollectionTypeExtension extends TreeAwareExtension
     }
 
     /**
-     * for Sf < 2.7
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
         if ($this->treeBuilder && $this->keyBuilder && $options['allow_add'] && $options['prototype']) {
-
             if ($view->vars['prototype']->vars['label'] == $options['prototype_name'].'label__') {
                 if (!isset($options['options']['label'])) {
                     $options['options']['label'] = $options['label'];

@@ -151,7 +151,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      */
     public function offsetSet($offset, $value)
     {
-        /* Not implemented: User addParent and addChild methods */
+        /* Not implemented: Use addParent and addChild methods */
     }
 
     /**
