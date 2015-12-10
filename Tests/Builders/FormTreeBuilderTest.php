@@ -17,9 +17,9 @@ class FormTreeBuilderTest extends FormTranslationTestCase
     public function testSimpleTreeBuilder()
     {
         $treeBuilder = new FormTreeBuilder();
-        $form        = $this->factory->createNamed('foo', method_exists(AbstractType::class, 'getBlockPrefix') ? FormType::class : 'form');
+        $form        = $this->factory->createNamed('foo', FormType::class);
 
-        $form->add('bar', method_exists(AbstractType::class, 'getBlockPrefix') ? TextType::class : 'text');
+        $form->add('bar', TextType::class);
 
         $formView = $form->createView();
         $fooTree  = $treeBuilder->getTree($formView);
@@ -42,13 +42,13 @@ class FormTreeBuilderTest extends FormTranslationTestCase
     public function testCollectionTreeBuilder()
     {
         $treeBuilder = new FormTreeBuilder();
-        $form        = $this->factory->createNamed('foo', method_exists(AbstractType::class, 'getBlockPrefix') ? FormType::class : 'form');
+        $form        = $this->factory->createNamed('foo', FormType::class);
 
         $form->add(
             'bar',
-            method_exists(AbstractType::class, 'getBlockPrefix') ? CollectionType::class : 'collection',
+            CollectionType::class,
             array(
-                'entry_type'   => method_exists(AbstractType::class, 'getBlockPrefix') ? TextType::class : 'text',
+                'entry_type'   => TextType::class,
                 'allow_add'    => true,
                 'allow_delete' => true,
             )
