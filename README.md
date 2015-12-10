@@ -1,6 +1,7 @@
 ElaoFormTranslationBundle
 =========================
 
+![](https://img.shields.io/badge/Symfony-2.6-blue.svg)
 [![Build Status](http://api.travis-ci.org/Elao/ElaoFormTranslationBundle.png)](http://travis-ci.org/Elao/ElaoFormTranslationBundle)
 
 Description:
