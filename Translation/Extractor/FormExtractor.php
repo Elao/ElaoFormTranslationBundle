@@ -2,7 +2,6 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Translation\Extractor;
 
-use Doctrine\Common\Annotations\DocParser;
 use JMS\TranslationBundle\Model\FileSource;
 use JMS\TranslationBundle\Model\Message;
 use JMS\TranslationBundle\Model\MessageCatalogue;
@@ -54,20 +53,15 @@ class FormExtractor implements FileVisitorInterface, NodeVisitor, ContainerAware
     protected $container;
 
     /**
-     * @param DocParser            $docParser
      * @param FormFactoryInterface $formFactory
      * @param LoggerInterface      $logger
      */
-    public function __construct(
-        DocParser $docParser,
-        FormFactoryInterface $formFactory,
-        LoggerInterface $logger
-    ) {
+    public function __construct(FormFactoryInterface $formFactory, LoggerInterface $logger)
+    {
         $this->traverser = new NodeTraverser();
         $this->traverser->addVisitor(new NameResolver());
         $this->traverser->addVisitor($this);
 
-        $this->docParser = $docParser;
         $this->formFactory = $formFactory;
         $this->logger = $logger;
     }
