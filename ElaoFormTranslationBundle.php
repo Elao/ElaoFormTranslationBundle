@@ -10,6 +10,8 @@
 
 namespace Elao\Bundle\FormTranslationBundle;
 
+use Elao\Bundle\FormTranslationBundle\DependencyInjection\Compiler\JMSTranslationPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -17,4 +19,11 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class ElaoFormTranslationBundle extends Bundle
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function build(ContainerBuilder $container)
+    {
+        $container->addCompilerPass(new JMSTranslationPass());
+    }
 }
