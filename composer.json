@@ -20,7 +20,10 @@
         "symfony/form": "~2.8|~3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "3.7.*",
+        "jms/translation-bundle": "~1.1",
+        "symfony/finder": "~2.8|~3.0",
+        "nikic/php-parser": "~1.4.1"
     },
     "autoload": {
         "psr-4": {
