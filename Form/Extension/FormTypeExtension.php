@@ -10,10 +10,8 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Form Type Extension

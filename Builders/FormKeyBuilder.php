@@ -10,9 +10,6 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Builders;
 
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
-
 use Elao\Bundle\FormTranslationBundle\Model\FormTree;
 
 /**

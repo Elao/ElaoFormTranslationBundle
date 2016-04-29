@@ -10,12 +10,11 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
-use Symfony\Component\Form\AbstractType;
+use Elao\Bundle\FormTranslationBundle\Builders\FormKeybuilder;
+use Elao\Bundle\FormTranslationBundle\Builders\FormTreebuilder;
+use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\Form\AbstractTypeExtension;
-use Elao\Bundle\FormTranslationBundle\Builders\FormTreebuilder;
-use Elao\Bundle\FormTranslationBundle\Builders\FormKeybuilder;
 
 /**
  * Tree Aware Extension
@@ -111,7 +110,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
      * @param string $key a key
      * @param string $value
      */
-    protected function generateKey(FormView &$view, $key, $value)
+    protected function generateKey(FormView $view, $key, $value)
     {
         if (!isset($view->vars['tree'])) {
             $view->vars['tree'] = $this->treeBuilder->getTree($view);

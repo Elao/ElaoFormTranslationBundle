@@ -4,8 +4,7 @@ namespace Elao\Bundle\FormTranslationBundle\Tests\Builders;
 
 use Elao\Bundle\FormTranslationBundle\Builders\FormKeyBuilder;
 use Elao\Bundle\FormTranslationBundle\Builders\FormTreeBuilder;
-use Elao\Bundle\FormTranslationBundle\Test\FormTranslationTestCase;
-use Symfony\Component\Form\AbstractType;
+use Elao\Bundle\FormTranslationBundle\Tests\FormTranslationTestCase;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
