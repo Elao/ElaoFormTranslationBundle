@@ -1,10 +1,8 @@
 <?php
 
-namespace Elao\Bundle\FormTranslationBundle\Test;
+namespace Elao\Bundle\FormTranslationBundle\Tests;
 
 use Symfony\Component\Form\Forms;
-use Symfony\Component\Form\FormBuilder;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 use Elao\Bundle\FormTranslationBundle\Form\Extension;
 
 abstract class FormTranslationTestCase extends \PHPUnit_Framework_TestCase
