@@ -159,7 +159,7 @@ class FormExtractor implements FileVisitorInterface, NodeVisitor, ContainerAware
         $labels = [];
 
         foreach ($view as $field) {
-            if (count($field)
+            if (count($field) > 0
                 && (
                     !isset($field->vars['choice_translation_domain'])
                     || $field->vars['choice_translation_domain'] !== false
@@ -168,28 +168,36 @@ class FormExtractor implements FileVisitorInterface, NodeVisitor, ContainerAware
                 $labels = array_merge($labels, $this->extractView($field));
             }
 
-            $labels[] = $field->vars['label'];
+            $labels[] = ['id' => $field->vars['label'], 'translation' => $field->vars['name']];
         }
 
         return $labels;
     }
 
     /**
-     * @param string          $id
+     * @param string          $label
      * @param SourceInterface $source
      * @param string          $domain
      */
-    protected function addToCatalogue($id, SourceInterface $source, $domain = null)
+    protected function addToCatalogue($label, SourceInterface $source, $domain = null)
     {
         if (null === $domain) {
-            $message = new Message($id);
+            $message = new Message($label['id']);
         } else {
-            $message = new Message($id, $domain);
+            $message = new Message($label['id'], $domain);
         }
 
-        $message->addSource($source);
+        $message
+            ->addSource($source)
+            ->setLocaleString($this->humanize($label['translation']))
+        ;
 
         $this->catalogue->add($message);
+    }
+
+    private function humanize($text)
+    {
+        return ucfirst(trim(strtolower(preg_replace(array('/([A-Z])/', '/[_\s]+/'), array('_$1', ' '), $text))));
     }
 
     /**
