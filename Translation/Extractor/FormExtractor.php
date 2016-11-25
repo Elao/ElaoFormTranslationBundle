@@ -159,7 +159,12 @@ class FormExtractor implements FileVisitorInterface, NodeVisitor, ContainerAware
         $labels = [];
 
         foreach ($view as $field) {
-            if (count($field) > 0) {
+            if (count($field)
+                && (
+                    !isset($field->vars['choice_translation_domain'])
+                    || $field->vars['choice_translation_domain'] !== false
+                )
+            ) {
                 $labels += $this->extractView($field);
             }
 
