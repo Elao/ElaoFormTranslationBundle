@@ -7,10 +7,19 @@
     <parameters>
         <parameter key="elao.form_translation.tree_builder.class">Elao\Bundle\FormTranslationBundle\Builders\FormTreeBuilder</parameter>
         <parameter key="elao.form_translation.key_builder.class">Elao\Bundle\FormTranslationBundle\Builders\FormKeyBuilder</parameter>
+        <parameter key="elao.form_translation.extractor.form_extractor.class">Elao\Bundle\FormTranslationBundle\Translation\Extractor\FormExtractor</parameter>
     </parameters>
 
     <services>
         <service id="elao.form_translation.tree_builder" class="%elao.form_translation.tree_builder.class%" />
         <service id="elao.form_translation.key_builder" class="%elao.form_translation.key_builder.class%" />
+        <service id="elao.form_translation.extractor.form_extractor" class="%elao.form_translation.extractor.form_extractor.class%" public="false">
+            <argument type="service" id="form.factory" />
+            <argument type="service" id="logger" />
+            <tag name="jms_translation.file_visitor" />
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
     </services>
 </container>
