@@ -89,7 +89,7 @@ class FormTreeBuilder
         }
 
         foreach ($view->vars['block_prefixes'] as $prefix) {
-            if (\in_array($prefix, $this->noChildren, true)) {
+            if (\in_array($prefix, $this->noChildren)) {
                 return false;
             }
         }
@@ -110,7 +110,7 @@ class FormTreeBuilder
             return false;
         }
 
-        return \in_array('collection', $view->vars['block_prefixes'], true);
+        return \in_array('collection', $view->vars['block_prefixes']);
     }
 
     /**
