@@ -33,6 +33,8 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
 
     /**
      * Constructor
+     *
+     * @param array $nodes
      */
     public function __construct($nodes = array())
     {

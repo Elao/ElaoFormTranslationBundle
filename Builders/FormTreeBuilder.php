@@ -46,7 +46,7 @@ class FormTreeBuilder
 
         $tree->addChild($this->createNodeFromView($view));
 
-    	return $tree;
+        return $tree;
     }
 
     /**
@@ -84,17 +84,17 @@ class FormTreeBuilder
      */
     private function hasChildrenWithLabel(FormView $view)
     {
-    	if (!isset($view->vars['compound']) || !$view->vars['compound']) {
+        if (!isset($view->vars['compound']) || !$view->vars['compound']) {
             return false;
-    	}
+        }
 
-    	foreach ($view->vars['block_prefixes'] as $prefix) {
-            if (in_array($prefix, $this->noChildren)) {
+        foreach ($view->vars['block_prefixes'] as $prefix) {
+            if (\in_array($prefix, $this->noChildren, true)) {
                 return false;
             }
-    	}
+        }
 
-    	return true;
+        return true;
     }
 
     /**
@@ -110,7 +110,7 @@ class FormTreeBuilder
             return false;
         }
 
-        return in_array('collection', $view->vars['block_prefixes']);
+        return \in_array('collection', $view->vars['block_prefixes'], true);
     }
 
     /**
