@@ -114,6 +114,7 @@ class Configuration implements ConfigurationInterface
             ->prototype('scalar')
                 ->isRequired()
             ->end()
+	    ->normalizeKeys(false)
             ->defaultValue($default);
 
         return $node;

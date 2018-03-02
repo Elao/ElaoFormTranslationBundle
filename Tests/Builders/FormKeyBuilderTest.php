@@ -27,8 +27,10 @@ class FormKeyBuilderTest extends FormTranslationTestCase
         $view  = $form->createView();
         $tree  = $treeBuilder->getTree($view['bar']);
         $label = $keyBuilder->buildKeyFromTree($tree, 'label');
+	$attr = $keyBuilder->buildKeyFromTree($tree, 'attr.baz');
 
         $this->assertEquals('form.foo.children.bar.label', $label);
+	$this->assertEquals('form.foo.children.bar.attr.baz', $attr);
     }
 
     /**
@@ -56,8 +58,12 @@ class FormKeyBuilderTest extends FormTranslationTestCase
         $prototypeTree  = $treeBuilder->getTree($view['bar']->vars['prototype']);
         $barLabel       = $keyBuilder->buildKeyFromTree($barTree, 'label');
         $prototypeLabel = $keyBuilder->buildKeyFromTree($prototypeTree, 'label');
+	$barAttr        = $keyBuilder->buildKeyFromTree($barTree, 'attr.baz');
+	$prototypeAttr  = $keyBuilder->buildKeyFromTree($prototypeTree, 'attr.baz');
 
         $this->assertEquals('form.foo.children.bar.label', $barLabel);
+	$this->assertEquals('form.foo.children.bar.attr.baz', $barAttr);
         $this->assertEquals('form.foo.children.bar.prototype.label', $prototypeLabel);
+	$this->assertEquals('form.foo.children.bar.prototype.attr.baz', $prototypeAttr);
     }
 }

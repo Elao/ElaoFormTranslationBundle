@@ -10,11 +10,13 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
+use Elao\Bundle\FormTranslationBundle\Builders\FormKeybuilder;
+use Elao\Bundle\FormTranslationBundle\Builders\FormTreebuilder;
+use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\Form\AbstractTypeExtension;
-use Elao\Bundle\FormTranslationBundle\Builders\FormTreebuilder;
-use Elao\Bundle\FormTranslationBundle\Builders\FormKeybuilder;
+use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**
  * Tree Aware Extension
@@ -48,6 +50,19 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
      * @var boolean
      */
     protected $autoGenerate = false;
+
+    /**
+     * @var PropertyAccessorInterface
+     */
+    protected $propertyAccessor;
+
+    /**
+     * TreeAwareExtension constructor
+     */
+    public function __construct()
+    {
+	$this->propertyAccessor = PropertyAccess::createPropertyAccessor();
+    }
 
     /**
      * Enable or disable automatic generation of missing labels
@@ -86,7 +101,10 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
      */
     public function setKeys(array $keys)
     {
-        $this->keys = $keys;
+	$this->keys = array();
+	foreach ($keys as $key => $value) {
+	    $this->keys['[' . implode('][', explode('.', $key)) . ']'] = $value;
+	}
     }
 
     /**
@@ -96,7 +114,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     {
         if ($this->treeBuilder && $this->keyBuilder) {
             foreach ($this->keys as $key => $value) {
-                if (isset($options[$key]) && $options[$key] === true) {
+		if ($this->propertyAccessor->isReadable($options, $key) && $this->propertyAccessor->getValue($options, $key) === true) {
                     $this->generateKey($view, $key, $value);
                 }
             }
@@ -116,6 +134,6 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
             $view->vars['tree'] = $this->treeBuilder->getTree($view);
         }
 
-        $view->vars[$key] = $this->keyBuilder->buildKeyFromTree($view->vars['tree'], $value);
+	$this->propertyAccessor->setValue($view->vars, $key, $this->keyBuilder->buildKeyFromTree($view->vars['tree'], $value));
     }
 }
