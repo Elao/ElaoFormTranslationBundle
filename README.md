@@ -1,7 +1,7 @@
 ElaoFormTranslationBundle
 =========================
 
-![](https://img.shields.io/badge/Symfony-3.0-blue.svg)
+![](https://img.shields.io/badge/Symfony-4.0-blue.svg)
 [![Build Status](http://api.travis-ci.org/Elao/ElaoFormTranslationBundle.png)](http://travis-ci.org/Elao/ElaoFormTranslationBundle)
 
 Description:
@@ -43,7 +43,7 @@ Add ElaoFormTranslationBundle to your composer.json:
 ``` json
 {
     "require": {
-        "elao/form-translation-bundle": "1.2.*"
+        "elao/form-translation-bundle": "2.*"
     }
 }
 ```

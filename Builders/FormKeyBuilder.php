@@ -10,9 +10,6 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Builders;
 
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
-
 use Elao\Bundle\FormTranslationBundle\Model\FormTree;
 
 /**
@@ -82,7 +79,7 @@ class FormKeyBuilder
             $key[] = $this->root;
         }
 
-        $last = count($tree) - 1;
+        $last = \count($tree) - 1;
 
         foreach ($tree as $index => $node) {
 

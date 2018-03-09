@@ -2,12 +2,11 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Test;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Forms;
-use Symfony\Component\Form\FormBuilder;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 use Elao\Bundle\FormTranslationBundle\Form\Extension;
 
-abstract class FormTranslationTestCase extends \PHPUnit_Framework_TestCase
+abstract class FormTranslationTestCase extends TestCase
 {
     /**
      * @var \Symfony\Component\Form\FormFactoryInterface
