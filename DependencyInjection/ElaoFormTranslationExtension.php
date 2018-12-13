@@ -63,6 +63,7 @@ class ElaoFormTranslationExtension extends Extension
         $container
             ->getDefinition('elao.form_translation.extension.tree_aware_extension')
             ->addMethodCall('setAutoGenerate', array($config['auto_generate']))
+            ->addMethodCall('setDefaultTranslationDomain', array($config['default_translation_domain']))
             ->addMethodCall('setTreebuilder', array(new Reference('elao.form_translation.tree_builder')))
             ->addMethodCall('setKeybuilder', array(new Reference('elao.form_translation.key_builder')));
 

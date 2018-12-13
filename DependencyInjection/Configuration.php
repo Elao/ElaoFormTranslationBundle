@@ -92,6 +92,10 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+                ->scalarNode('default_translation_domain')
+                    ->info('<info>Default translation domain for all forms</info>')
+                    ->defaultValue('messages')
+                ->end()
             ->end();
 
         return $treeBuilder;
