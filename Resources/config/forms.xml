@@ -4,29 +4,22 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <parameters>
-        <parameter key="elao.form_translation.extension.form_type_extension.class">Elao\Bundle\FormTranslationBundle\Form\Extension\FormTypeExtension</parameter>
-        <parameter key="elao.form_translation.extension.collection_type_extension.class">Elao\Bundle\FormTranslationBundle\Form\Extension\CollectionTypeExtension</parameter>
-        <parameter key="elao.form_translation.extension.button_type_extension.class">Elao\Bundle\FormTranslationBundle\Form\Extension\ButtonTypeExtension</parameter>
-        <parameter key="elao.form_translation.extension.choice_type_extension.class">Elao\Bundle\FormTranslationBundle\Form\Extension\ChoiceTypeExtension</parameter>
-    </parameters>
-
     <services>
         <service id="elao.form_translation.extension.tree_aware_extension" abstract="true" />
 
-        <service id="elao.form_translation.extension.form_type_extension" class="%elao.form_translation.extension.form_type_extension.class%" parent="elao.form_translation.extension.tree_aware_extension">
+        <service id="elao.form_translation.extension.form_type_extension" class="Elao\Bundle\FormTranslationBundle\Form\Extension\FormTypeExtension" parent="elao.form_translation.extension.tree_aware_extension">
             <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
         </service>
 
-        <service id="elao.form_translation.extension.collection_type_extension" class="%elao.form_translation.extension.collection_type_extension.class%" parent="elao.form_translation.extension.tree_aware_extension">
+        <service id="elao.form_translation.extension.collection_type_extension" class="Elao\Bundle\FormTranslationBundle\Form\Extension\CollectionTypeExtension" parent="elao.form_translation.extension.tree_aware_extension">
             <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\CollectionType"/>
         </service>
 
-        <service id="elao.form_translation.extension.button_type_extension" class="%elao.form_translation.extension.button_type_extension.class%" parent="elao.form_translation.extension.tree_aware_extension">
+        <service id="elao.form_translation.extension.button_type_extension" class="Elao\Bundle\FormTranslationBundle\Form\Extension\ButtonTypeExtension" parent="elao.form_translation.extension.tree_aware_extension">
             <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\ButtonType"/>
         </service>
 
-        <service id="elao.form_translation.extension.choice_type_extension" class="%elao.form_translation.extension.choice_type_extension.class%" parent="elao.form_translation.extension.tree_aware_extension">
+        <service id="elao.form_translation.extension.choice_type_extension" class="Elao\Bundle\FormTranslationBundle\Form\Extension\ChoiceTypeExtension" parent="elao.form_translation.extension.tree_aware_extension">
             <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\ChoiceType"/>
         </service>
     </services>

@@ -21,9 +21,17 @@ class FormTypeExtension extends TreeAwareExtension
     /**
      * {@inheritdoc}
      */
+    public static function getExtendedTypes()
+    {
+        return [FormType::class];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getExtendedType()
     {
-        return FormType::class;
+        return self::getExtendedTypes()[0];
     }
 
     /**

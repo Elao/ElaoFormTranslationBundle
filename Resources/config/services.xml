@@ -4,13 +4,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <parameters>
-        <parameter key="elao.form_translation.tree_builder.class">Elao\Bundle\FormTranslationBundle\Builders\FormTreeBuilder</parameter>
-        <parameter key="elao.form_translation.key_builder.class">Elao\Bundle\FormTranslationBundle\Builders\FormKeyBuilder</parameter>
-    </parameters>
-
     <services>
-        <service id="elao.form_translation.tree_builder" class="%elao.form_translation.tree_builder.class%" />
-        <service id="elao.form_translation.key_builder" class="%elao.form_translation.key_builder.class%" />
+        <service id="elao.form_translation.tree_builder" class="Elao\Bundle\FormTranslationBundle\Builders\FormTreeBuilder" />
+        <service id="elao.form_translation.key_builder" class="Elao\Bundle\FormTranslationBundle\Builders\FormKeyBuilder" />
     </services>
 </container>
