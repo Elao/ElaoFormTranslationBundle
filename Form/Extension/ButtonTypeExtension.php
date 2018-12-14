@@ -21,9 +21,17 @@ class ButtonTypeExtension extends TreeAwareExtension
     /**
      * {@inheritdoc}
      */
+    public static function getExtendedTypes()
+    {
+        return [ButtonType::class];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getExtendedType()
     {
-        return ButtonType::class;
+        return self::getExtendedTypes()[0];
     }
 
     /**

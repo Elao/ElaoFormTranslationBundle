@@ -20,8 +20,16 @@ class ChoiceTypeExtension extends TreeAwareExtension
     /**
      * {@inheritdoc}
      */
+    public static function getExtendedTypes()
+    {
+        return [ChoiceType::class];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getExtendedType()
     {
-        return ChoiceType::class;
+        return self::getExtendedTypes()[0];
     }
 }

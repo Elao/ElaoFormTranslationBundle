@@ -27,8 +27,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('elao_form_translation');
+        $treeBuilder = new TreeBuilder('elao_form_translation');
+        $rootNode = method_exists($treeBuilder, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root('elao_form_translation');
 
         $rootNode
             ->info('<info>Activate the Form Tree component (used to generate label translation keys)</info>')
@@ -107,8 +107,8 @@ class Configuration implements ConfigurationInterface
      */
     public function addKeysConfig($key, $default = array())
     {
-        $builder = new TreeBuilder();
-        $node    = $builder->root($key);
+        $treeBuilder = new TreeBuilder($key);
+        $node = method_exists($treeBuilder, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root($key);
 
         $node
             ->prototype('scalar')
