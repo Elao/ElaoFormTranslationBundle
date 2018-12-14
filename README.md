@@ -164,6 +164,19 @@ Which would generate that kind of keys:
     # (parent_field_name)[separator](field_name)[separator][key]
     register_name_label
 
+#### Set default translation domain for all forms
+
+You can set a default translation domain for all forms and choice with the following configuration:
+
+```yml
+elao_form_translation:
+    default_translation_domain: "forms"
+```
+
+This will set the default options `translation_domain` and `choice_translation_domain` to all forms and choices off your application.
+
+You still can override these options in each `configureOptions` method of your form types.
+
 #### Default configuration:
 
 ``` yml
@@ -174,6 +187,9 @@ elao_form_translation:
 
     # Generate translation keys for all missing labels
     auto_generate: false
+
+    # Set default translation domain on all forms
+    default_translation_domain: "messages"
 
     # Customize available keys
     keys:

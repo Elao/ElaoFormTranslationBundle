@@ -50,6 +50,13 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     protected $autoGenerate = false;
 
     /**
+     * Default translation domain for all forms
+     *
+     * @var string
+     */
+    protected $defaultTranslationDomain;
+
+    /**
      * Enable or disable automatic generation of missing labels
      *
      * @param boolean $enabled The Boolean
@@ -87,6 +94,16 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     public function setKeys(array $keys)
     {
         $this->keys = $keys;
+    }
+
+    /**
+     * Set default translation domain
+     *
+     * @param string $defaultTranslationDomain
+     */
+    public function setDefaultTranslationDomain(string $defaultTranslationDomain)
+    {
+        $this->defaultTranslationDomain = $defaultTranslationDomain;
     }
 
     /**
