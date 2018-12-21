@@ -177,6 +177,13 @@ This will set the default options `translation_domain` and `choice_translation_d
 
 You still can override these options in each `configureOptions` method of your form types.
 
+You can also disable translation on all form by setting the option to `false`:
+
+```yml
+elao_form_translation:
+    default_translation_domain: false
+```
+
 #### Default configuration:
 
 ``` yml
@@ -189,7 +196,7 @@ elao_form_translation:
     auto_generate: false
 
     # Set default translation domain on all forms
-    default_translation_domain: "messages"
+    default_translation_domain: ~
 
     # Customize available keys
     keys:

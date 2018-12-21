@@ -52,7 +52,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Default translation domain for all forms
      *
-     * @var string
+     * @var string|bool|null
      */
     protected $defaultTranslationDomain;
 
@@ -99,9 +99,9 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Set default translation domain
      *
-     * @param string $defaultTranslationDomain
+     * @param string|bool|null $defaultTranslationDomain
      */
-    public function setDefaultTranslationDomain(string $defaultTranslationDomain)
+    public function setDefaultTranslationDomain($defaultTranslationDomain)
     {
         $this->defaultTranslationDomain = $defaultTranslationDomain;
     }
