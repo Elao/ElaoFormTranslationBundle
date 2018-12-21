@@ -94,7 +94,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 ->scalarNode('default_translation_domain')
                     ->info('<info>Default translation domain for all forms</info>')
-                    ->defaultValue('messages')
+                    ->defaultNull()
                 ->end()
             ->end();
 
