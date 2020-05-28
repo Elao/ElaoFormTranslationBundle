@@ -23,7 +23,7 @@ class CollectionTypeExtension extends TreeAwareExtension
     /**
      * {@inheritdoc}
      */
-    public static function getExtendedTypes()
+    public static function getExtendedTypes(): iterable
     {
         return [CollectionType::class];
     }
