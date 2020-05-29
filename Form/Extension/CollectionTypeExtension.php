@@ -1,9 +1,9 @@
 <?php
 
-/**
+/*
  * This file is part of the ElaoFormTranslation bundle.
  *
- * Copyright (C) 2014 Elao
+ * Copyright (C) Elao
  *
  * @author Elao <contact@elao.com>
  */
@@ -23,7 +23,7 @@ class CollectionTypeExtension extends TreeAwareExtension
     /**
      * {@inheritdoc}
      */
-    public static function getExtendedTypes()
+    public static function getExtendedTypes(): iterable
     {
         return [CollectionType::class];
     }
@@ -53,7 +53,7 @@ class CollectionTypeExtension extends TreeAwareExtension
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
         if ($this->treeBuilder && $this->keyBuilder && $options['allow_add'] && $options['prototype']) {
-            if ($view->vars['prototype']->vars['label'] == $options['prototype_name'].'label__') {
+            if ($view->vars['prototype']->vars['label'] == $options['prototype_name'] . 'label__') {
                 if (!isset($options['options']['label'])) {
                     $options['options']['label'] = $options['label'];
                 }

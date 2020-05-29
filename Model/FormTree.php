@@ -1,9 +1,9 @@
 <?php
 
-/**
+/*
  * This file is part of the ElaoFormTranslation bundle.
  *
- * Copyright (C) 2014 Elao
+ * Copyright (C) Elao
  *
  * @author Elao <contact@elao.com>
  */
@@ -27,7 +27,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
     /**
      * Current position in the loop
      *
-     * @var integer
+     * @var int
      */
     private $position = 0;
 
@@ -36,7 +36,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      *
      * @param array $nodes
      */
-    public function __construct($nodes = array())
+    public function __construct($nodes = [])
     {
         $this->nodes = $nodes;
     }
@@ -80,7 +80,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      */
     public function count()
     {
-        return count($this->nodes);
+        return \count($this->nodes);
     }
 
     /**
@@ -126,7 +126,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      *
      * @param mixed $offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {

@@ -1,9 +1,9 @@
 <?php
 
-/**
+/*
  * This file is part of the ElaoFormTranslation bundle.
  *
- * Copyright (C) 2014 Elao
+ * Copyright (C) Elao
  *
  * @author Elao <contact@elao.com>
  */
@@ -21,7 +21,7 @@ class ChoiceTypeExtension extends TreeAwareExtension
     /**
      * {@inheritdoc}
      */
-    public static function getExtendedTypes()
+    public static function getExtendedTypes(): iterable
     {
         return [ChoiceType::class];
     }

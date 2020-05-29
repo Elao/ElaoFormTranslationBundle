@@ -1,33 +1,69 @@
+sudo: false
 language: php
 
-php:
-  - 7.0
+branches:
+  only:
+      - master
+
+env:
+  global:
+    - CHECK_CODE_STYLE="no"
+    - COMPOSER_FLAGS=""
+    - COMPOSER_MEMORY_LIMIT=-1
+    - ENABLE_CODE_COVERAGE="no"
+    - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
+    - SYMFONY_VERSION=""
 
 matrix:
   fast_finish: true
   include:
-    - php: 7.0
-      env: SYMFONY_VERSION="3.0.*@dev"
     - php: 7.1
-      env: SYMFONY_VERSION="3.0.*@dev"
+      env: SYMFONY_VERSION="3.0.*"
     - php: 7.2
-      env: SYMFONY_VERSION="3.0.*@dev"
+      env: SYMFONY_VERSION="3.0.*"
     - php: 7.1
-      env: SYMFONY_VERSION="4.0.*@dev"
+      env: SYMFONY_VERSION="4.0.*"
     - php: 7.2
-      env: SYMFONY_VERSION="4.0.*@dev"
-
-sudo: false
+      env: SYMFONY_VERSION="4.0.*"
+    - php: 7.3
+      env: SYMFONY_VERSION="4.4.*"
+    - php: 7.3
+      env: SYMFONY_VERSION="5.0.*"
+    - php: 7.4
+      env: SYMFONY_VERSION="5.0.*"
+    - php: 7.4
+      env: SYMFONY_VERSION="5.1.*"
+    # bleeding edge (unreleased dev versions where failures are allowed):
+    - php: nightly # PHP 8
+      env: SYMFONY_VERSION="5.2.*"
+  allow_failures:
+    - env: SYMFONY_VERSION="5.2.*"
 
 cache:
   directories:
     - $HOME/.composer/cache
+    - $HOME/symfony-bridge/.phpunit
 
 before_install:
-  - composer selfupdate
-  - if [ "$SYMFONY_VERSION" != "" ]; then composer require "symfony/symfony:${SYMFONY_VERSION}" --no-update; fi;
+  - if [[ "$ENABLE_CODE_COVERAGE" != "yes" ]]; then phpenv config-rm xdebug.ini || true; fi;
+  - if [[ "$SYMFONY_VERSION" != "" ]]; then composer require "symfony/symfony:${SYMFONY_VERSION}" --no-update; fi;
+  - if [[ "$CHECK_CODE_STYLE" != "yes" ]]; then composer remove "friendsofphp/php-cs-fixer" --no-update --no-interaction --dev; fi;
 
-install: composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
+install:
+  - |
+    # Set composer's platform to php 7.4 if we're on php 8 & use dev version of phpunit-bridge (which ignores platform reqs)
+    echo $TRAVIS_PHP_VERSION
+    if [[ $TRAVIS_PHP_VERSION = 'nightly' ]]; then
+      echo "Set composer's platform to php 7.4"
+      composer config platform.php 7.4.99
+      composer require "symfony/phpunit-bridge:5.1.x-dev" --no-update --no-interaction --dev
+    fi
+  - composer update --prefer-dist --no-interaction --optimize-autoloader --prefer-stable --no-progress $COMPOSER_FLAGS
+  - if [[ "$ENABLE_CODE_COVERAGE" == "yes" ]]; then composer require --dev satooshi/php-coveralls; fi;
 
 script:
-  - vendor/bin/phpunit --coverage-text
+  - if [[ "$ENABLE_CODE_COVERAGE" == "yes" ]]; then vendor/bin/simple-phpunit --coverage-text --coverage-clover build/logs/clover.xml; else vendor/bin/simple-phpunit; fi;
+  - if [[ "$CHECK_CODE_STYLE" == "yes" ]]; then PHP_CS_FIXER_FUTURE_MODE=1 vendor/bin/php-cs-fixer fix --config=.php_cs --dry-run --no-interaction --diff; fi;
+
+after_success:
+  - if [[ "$ENABLE_CODE_COVERAGE" == "yes" ]]; then php vendor/bin/coveralls -v; fi;

@@ -1,10 +1,18 @@
 <?php
 
+/*
+ * This file is part of the ElaoFormTranslation bundle.
+ *
+ * Copyright (C) Elao
+ *
+ * @author Elao <contact@elao.com>
+ */
+
 namespace Elao\Bundle\FormTranslationBundle\Test;
 
+use Elao\Bundle\FormTranslationBundle\Form\Extension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Forms;
-use Elao\Bundle\FormTranslationBundle\Form\Extension;
 
 abstract class FormTranslationTestCase extends TestCase
 {
@@ -16,7 +24,7 @@ abstract class FormTranslationTestCase extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->factory = Forms::createFormFactoryBuilder()
             ->addTypeExtensions($this->getTypeExtensions())
@@ -30,12 +38,12 @@ abstract class FormTranslationTestCase extends TestCase
      */
     protected function getTypeExtensions()
     {
-        $extensions = array(
+        $extensions = [
             new Extension\ButtonTypeExtension(),
             new Extension\ChoiceTypeExtension(),
             new Extension\CollectionTypeExtension(),
             new Extension\FormTypeExtension(),
-        );
+        ];
 
         return $extensions;
     }

@@ -1,11 +1,18 @@
 <?php
 
+/*
+ * This file is part of the ElaoFormTranslation bundle.
+ *
+ * Copyright (C) Elao
+ *
+ * @author Elao <contact@elao.com>
+ */
+
 namespace Elao\Bundle\FormTranslationBundle\Tests\Builders;
 
 use Elao\Bundle\FormTranslationBundle\Builders\FormKeyBuilder;
 use Elao\Bundle\FormTranslationBundle\Builders\FormTreeBuilder;
 use Elao\Bundle\FormTranslationBundle\Test\FormTranslationTestCase;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -18,14 +25,14 @@ class FormKeyBuilderTest extends FormTranslationTestCase
     public function testSimpleTreeBuilder()
     {
         $treeBuilder = new FormTreeBuilder();
-        $keyBuilder  = new FormKeyBuilder();
+        $keyBuilder = new FormKeyBuilder();
 
         $form = $this->factory->createNamed('foo', FormType::class);
 
         $form->add('bar', TextType::class);
 
-        $view  = $form->createView();
-        $tree  = $treeBuilder->getTree($view['bar']);
+        $view = $form->createView();
+        $tree = $treeBuilder->getTree($view['bar']);
         $label = $keyBuilder->buildKeyFromTree($tree, 'label');
 
         $this->assertEquals('form.foo.children.bar.label', $label);
@@ -37,24 +44,24 @@ class FormKeyBuilderTest extends FormTranslationTestCase
     public function testCollectionTreeBuilder()
     {
         $treeBuilder = new FormTreeBuilder();
-        $keyBuilder  = new FormKeyBuilder();
+        $keyBuilder = new FormKeyBuilder();
 
         $form = $this->factory->createNamed('foo', FormType::class);
 
         $form->add(
             'bar',
             CollectionType::class,
-            array(
-                'entry_type'   => TextType::class,
-                'allow_add'    => true,
+            [
+                'entry_type' => TextType::class,
+                'allow_add' => true,
                 'allow_delete' => true,
-            )
+            ]
         );
 
-        $view           = $form->createView();
-        $barTree        = $treeBuilder->getTree($view['bar']);
-        $prototypeTree  = $treeBuilder->getTree($view['bar']->vars['prototype']);
-        $barLabel       = $keyBuilder->buildKeyFromTree($barTree, 'label');
+        $view = $form->createView();
+        $barTree = $treeBuilder->getTree($view['bar']);
+        $prototypeTree = $treeBuilder->getTree($view['bar']->vars['prototype']);
+        $barLabel = $keyBuilder->buildKeyFromTree($barTree, 'label');
         $prototypeLabel = $keyBuilder->buildKeyFromTree($prototypeTree, 'label');
 
         $this->assertEquals('form.foo.children.bar.label', $barLabel);

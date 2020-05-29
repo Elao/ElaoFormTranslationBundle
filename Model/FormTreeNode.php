@@ -1,9 +1,9 @@
 <?php
 
-/**
+/*
  * This file is part of the ElaoFormTranslation bundle.
  *
- * Copyright (C) 2014 Elao
+ * Copyright (C) Elao
  *
  * @author Elao <contact@elao.com>
  */
@@ -27,38 +27,38 @@ class FormTreeNode
     /**
      * Whether or not the node has labeled children.
      *
-     * @var boolean
+     * @var bool
      */
     private $children;
 
     /**
      * Whether or not the node is a collection.
      *
-     * @var boolean
+     * @var bool
      */
     private $collection;
 
     /**
      * Whether or not the node is a prototype.
      *
-     * @var boolean
+     * @var bool
      */
     private $prototype;
 
     /**
      * Constructor
      *
-     * @param string  $name       The node's name
-     * @param boolean $children   Whether or not the node has labeled children
-     * @param boolean $collection Is the node a collection
-     * @param boolean $prototype  Is the node a prototype
+     * @param string $name       The node's name
+     * @param bool   $children   Whether or not the node has labeled children
+     * @param bool   $collection Is the node a collection
+     * @param bool   $prototype  Is the node a prototype
      */
     public function __construct($name, $children = false, $collection = false, $prototype = false)
     {
-        $this->name       = (string) $name;
-        $this->children   = (boolean) $children;
-        $this->collection = (boolean) $collection;
-        $this->prototype  = (boolean) $prototype;
+        $this->name = (string) $name;
+        $this->children = (bool) $children;
+        $this->collection = (bool) $collection;
+        $this->prototype = (bool) $prototype;
     }
 
     /**
@@ -74,7 +74,7 @@ class FormTreeNode
     /**
      * Does the node has labeled children?
      *
-     * @return boolean
+     * @return bool
      */
     public function hasChildren()
     {
@@ -84,7 +84,7 @@ class FormTreeNode
     /**
      * Is the node a collection?
      *
-     * @return boolean
+     * @return bool
      */
     public function isCollection()
     {
@@ -94,7 +94,7 @@ class FormTreeNode
     /**
      * Is the node a prototype?
      *
-     * @return boolean
+     * @return bool
      */
     public function isPrototype()
     {
