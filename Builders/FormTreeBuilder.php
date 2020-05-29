@@ -1,19 +1,18 @@
 <?php
 
-/**
+/*
  * This file is part of the ElaoFormTranslation bundle.
  *
- * Copyright (C) 2014 Elao
+ * Copyright (C) Elao
  *
  * @author Elao <contact@elao.com>
  */
 
 namespace Elao\Bundle\FormTranslationBundle\Builders;
 
-use Symfony\Component\Form\FormView;
-
 use Elao\Bundle\FormTranslationBundle\Model\FormTree;
 use Elao\Bundle\FormTranslationBundle\Model\FormTreeNode;
+use Symfony\Component\Form\FormView;
 
 /**
  * Responsible form building tree for forms.
@@ -27,7 +26,7 @@ class FormTreeBuilder
      *
      * @var array
      */
-    private $noChildren = array('date', 'time', 'datetime', 'choice');
+    private $noChildren = ['date', 'time', 'datetime', 'choice'];
 
     /**
      * Get the full tree for a given view
@@ -41,7 +40,7 @@ class FormTreeBuilder
         if ($view->parent !== null) {
             $tree = $this->getTree($view->parent);
         } else {
-            $tree = new FormTree;
+            $tree = new FormTree();
         }
 
         $tree->addChild($this->createNodeFromView($view));
@@ -62,15 +61,13 @@ class FormTreeBuilder
     /**
      * Create a FormTreeNode for the given view
      *
-     * @param FormView $view
-     *
      * @return FormTreeNode
      */
     private function createNodeFromView(FormView $view)
     {
-        $haschildren  = $this->hasChildrenWithLabel($view);
+        $haschildren = $this->hasChildrenWithLabel($view);
         $isCollection = $haschildren ? $this->isCollection($view) : false;
-        $isPrototype  = $this->isPrototype($view);
+        $isPrototype = $this->isPrototype($view);
 
         return new FormTreeNode($view->vars['name'], $haschildren, $isCollection, $isPrototype);
     }
@@ -80,7 +77,7 @@ class FormTreeBuilder
      *
      * @param FormView $view The FormView
      *
-     * @return boolean
+     * @return bool
      */
     private function hasChildrenWithLabel(FormView $view)
     {
@@ -102,7 +99,7 @@ class FormTreeBuilder
      *
      * @param FormView $view The FormView
      *
-     * @return boolean
+     * @return bool
      */
     private function isCollection(FormView $view)
     {
@@ -118,7 +115,7 @@ class FormTreeBuilder
      *
      * @param FormView $view The FormView
      *
-     * @return boolean
+     * @return bool
      */
     private function isPrototype(FormView $view)
     {

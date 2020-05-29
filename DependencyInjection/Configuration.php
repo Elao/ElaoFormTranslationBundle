@@ -1,9 +1,9 @@
 <?php
 
-/**
+/*
  * This file is part of the ElaoFormTranslation bundle.
  *
- * Copyright (C) 2014 Elao
+ * Copyright (C) Elao
  *
  * @author Elao <contact@elao.com>
  */
@@ -23,7 +23,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getConfigTreeBuilder()
     {
@@ -45,27 +45,27 @@ class Configuration implements ConfigurationInterface
                         ->append(
                             $this->addKeysConfig(
                                 'form',
-                                array(
-                                    'label' => "label",
-                                    'help'  => "help",
-                                )
+                                [
+                                    'label' => 'label',
+                                    'help' => 'help',
+                                ]
                             )
                         )
                         ->append(
                             $this->addKeysConfig(
                                 'collection',
-                                array(
-                                    'label_add'    => "label_add",
-                                    'label_delete' => "label_delete",
-                                )
+                                [
+                                    'label_add' => 'label_add',
+                                    'label_delete' => 'label_delete',
+                                ]
                             )
                         )
                         ->append(
                             $this->addKeysConfig(
                                 'choice',
-                                array(
-                                    'empty_value' => "empty_value",
-                                )
+                                [
+                                    'empty_value' => 'empty_value',
+                                ]
                             )
                         )
                     ->end()
@@ -105,11 +105,11 @@ class Configuration implements ConfigurationInterface
      * Add Keys Config
      *
      * @param string $key
-     * @param array $default
+     * @param array  $default
      *
      * @return ArrayNodeDefinition|NodeDefinition
      */
-    public function addKeysConfig($key, $default = array())
+    public function addKeysConfig($key, $default = [])
     {
         $treeBuilder = new TreeBuilder($key);
         $node = method_exists($treeBuilder, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root($key);

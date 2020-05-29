@@ -1,9 +1,9 @@
 <?php
 
-/**
+/*
  * This file is part of the ElaoFormTranslation bundle.
  *
- * Copyright (C) 2014 Elao
+ * Copyright (C) Elao
  *
  * @author Elao <contact@elao.com>
  */
@@ -55,11 +55,11 @@ class FormKeyBuilder
      * @param string $children  Prefix for children nodes
      * @param string $prototype Prefix for prototype nodes
      */
-    public function __construct($separator = ".", $root = "form", $children = "children", $prototype = "prototype")
+    public function __construct($separator = '.', $root = 'form', $children = 'children', $prototype = 'prototype')
     {
         $this->separator = $separator;
-        $this->root      = $root;
-        $this->children  = $children;
+        $this->root = $root;
+        $this->children = $children;
         $this->prototype = $prototype;
     }
 
@@ -73,7 +73,7 @@ class FormKeyBuilder
      */
     public function buildKeyFromTree(FormTree $tree, $parent)
     {
-        $key = array();
+        $key = [];
 
         if ($this->root) {
             $key[] = $this->root;
@@ -82,7 +82,6 @@ class FormKeyBuilder
         $last = \count($tree) - 1;
 
         foreach ($tree as $index => $node) {
-
             if (!$node->isPrototype()) {
                 $key[] = $node->getName();
             }

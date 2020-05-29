@@ -1,21 +1,21 @@
 <?php
 
-/**
+/*
  * This file is part of the ElaoFormTranslation bundle.
  *
- * Copyright (C) 2014 Elao
+ * Copyright (C) Elao
  *
  * @author Elao <contact@elao.com>
  */
 
 namespace Elao\Bundle\FormTranslationBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * ElaoFormTranslation extension
@@ -25,7 +25,7 @@ use Symfony\Component\DependencyInjection\Reference;
 class ElaoFormTranslationExtension extends Extension
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -33,7 +33,7 @@ class ElaoFormTranslationExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         if ($config['enabled']) {
-            $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+            $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
             $loader->load('services.xml');
             $loader->load('forms.xml');
@@ -62,26 +62,26 @@ class ElaoFormTranslationExtension extends Extension
         // Set up the Tree Aware extension
         $container
             ->getDefinition('elao.form_translation.extension.tree_aware_extension')
-            ->addMethodCall('setAutoGenerate', array($config['auto_generate']))
-            ->addMethodCall('setDefaultTranslationDomain', array($config['default_translation_domain']))
-            ->addMethodCall('setTreebuilder', array(new Reference('elao.form_translation.tree_builder')))
-            ->addMethodCall('setKeybuilder', array(new Reference('elao.form_translation.key_builder')));
+            ->addMethodCall('setAutoGenerate', [$config['auto_generate']])
+            ->addMethodCall('setDefaultTranslationDomain', [$config['default_translation_domain']])
+            ->addMethodCall('setTreebuilder', [new Reference('elao.form_translation.tree_builder')])
+            ->addMethodCall('setKeybuilder', [new Reference('elao.form_translation.key_builder')]);
 
         // Set up the Form extensions
         $container
             ->getDefinition('elao.form_translation.extension.form_type_extension')
-            ->addMethodCall('setKeys', array($config['keys']['form']));
+            ->addMethodCall('setKeys', [$config['keys']['form']]);
 
         $container
             ->getDefinition('elao.form_translation.extension.button_type_extension')
-            ->addMethodCall('setKeys', array($config['keys']['form']));
+            ->addMethodCall('setKeys', [$config['keys']['form']]);
 
         $container
             ->getDefinition('elao.form_translation.extension.collection_type_extension')
-            ->addMethodCall('setKeys', array(array_merge($config['keys']['form'], $config['keys']['collection'])));
+            ->addMethodCall('setKeys', [array_merge($config['keys']['form'], $config['keys']['collection'])]);
 
         $container
             ->getDefinition('elao.form_translation.extension.choice_type_extension')
-            ->addMethodCall('setKeys', array(array_merge($config['keys']['form'], $config['keys']['choice'])));
+            ->addMethodCall('setKeys', [array_merge($config['keys']['form'], $config['keys']['choice'])]);
     }
 }

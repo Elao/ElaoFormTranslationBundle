@@ -1,20 +1,20 @@
 <?php
 
-/**
+/*
  * This file is part of the ElaoFormTranslation bundle.
  *
- * Copyright (C) 2014 Elao
+ * Copyright (C) Elao
  *
  * @author Elao <contact@elao.com>
  */
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
+use Elao\Bundle\FormTranslationBundle\Builders\FormKeybuilder;
+use Elao\Bundle\FormTranslationBundle\Builders\FormTreebuilder;
+use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\Form\AbstractTypeExtension;
-use Elao\Bundle\FormTranslationBundle\Builders\FormTreebuilder;
-use Elao\Bundle\FormTranslationBundle\Builders\FormKeybuilder;
 
 /**
  * Tree Aware Extension
@@ -45,7 +45,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Whether automatic generation of missing keys is enabled or not
      *
-     * @var boolean
+     * @var bool
      */
     protected $autoGenerate = false;
 
@@ -59,7 +59,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Enable or disable automatic generation of missing labels
      *
-     * @param boolean $enabled The Boolean
+     * @param bool $enabled The Boolean
      */
     public function setAutoGenerate($enabled)
     {
@@ -123,9 +123,9 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Generate the key for the given view field
      *
-     * @param FormView $view The form view
-     * @param string $key a key
-     * @param string $value
+     * @param FormView $view  The form view
+     * @param string   $key   a key
+     * @param string   $value
      */
     protected function generateKey(FormView &$view, $key, $value)
     {
