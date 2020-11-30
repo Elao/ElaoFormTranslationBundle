@@ -15,6 +15,8 @@ use Elao\Bundle\FormTranslationBundle\Builders\FormTreebuilder;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 /**
  * Tree Aware Extension
@@ -55,6 +57,11 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
      * @var string|bool|null
      */
     protected $defaultTranslationDomain;
+
+    /**
+     * @var PropertyAccessor
+     */
+    protected $propertyAccessor;
 
     /**
      * Enable or disable automatic generation of missing labels
@@ -113,7 +120,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     {
         if ($this->treeBuilder && $this->keyBuilder) {
             foreach ($this->keys as $key => $value) {
-                if (isset($options[$key]) && $options[$key] === true) {
+                if ($this->optionEquals($options, $key, true)) {
                     $this->generateKey($view, $key, $value);
                 }
             }
@@ -133,6 +140,33 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
             $view->vars['tree'] = $this->treeBuilder->getTree($view);
         }
 
-        $view->vars[$key] = $this->keyBuilder->buildKeyFromTree($view->vars['tree'], $value);
+        $this->setVar($view->vars, $key, $this->keyBuilder->buildKeyFromTree($view->vars['tree'], $value));
+    }
+
+    protected function setVar(array &$vars, string $key, $value): void
+    {
+        if ($this->getPropertyAccessor()->isWritable($vars, $key)) {
+            $this->getPropertyAccessor()->setValue($vars, $key, $value);
+        } else {
+            $vars[$key] = $value;
+        }
+    }
+
+    protected function optionEquals(array $options, string $key, $value): bool
+    {
+        if ($this->getPropertyAccessor()->isReadable($options, $key)) {
+            return $this->getPropertyAccessor()->getValue($options, $key) === $value;
+        }
+
+        return isset($options[$key]) ? $options[$key] === $value : false;
+    }
+
+    protected function getPropertyAccessor(): PropertyAccessor
+    {
+        if (!$this->propertyAccessor) {
+            $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
+        }
+
+        return $this->propertyAccessor;
     }
 }
