@@ -48,6 +48,7 @@ class Configuration implements ConfigurationInterface
                                 [
                                     'label' => 'label',
                                     'help' => 'help',
+                                    '[attr][placeholder]' => 'placeholder',
                                 ]
                             )
                         )
@@ -64,6 +65,7 @@ class Configuration implements ConfigurationInterface
                             $this->addKeysConfig(
                                 'choice',
                                 [
+                                    'placeholder' => 'placeholder',
                                     'empty_value' => 'empty_value',
                                 ]
                             )
