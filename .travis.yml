@@ -33,11 +33,13 @@ matrix:
       env: SYMFONY_VERSION="5.0.*"
     - php: 7.4
       env: SYMFONY_VERSION="5.1.*"
+    - php: 8.0
+      env: SYMFONY_VERSION="5.2.*"
     # bleeding edge (unreleased dev versions where failures are allowed):
     - php: nightly # PHP 8
-      env: SYMFONY_VERSION="5.2.*"
+      env: SYMFONY_VERSION="5.3.*"
   allow_failures:
-    - env: SYMFONY_VERSION="5.2.*"
+    - env: SYMFONY_VERSION="5.3.*"
 
 cache:
   directories:
