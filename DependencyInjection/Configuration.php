@@ -46,8 +46,8 @@ class Configuration implements ConfigurationInterface
                             $this->addKeysConfig(
                                 'form',
                                 [
-                                    'label' => 'label',
-                                    'help' => 'help',
+                                    '[label]' => 'label',
+                                    '[help]' => 'help',
                                     '[attr][placeholder]' => 'placeholder',
                                 ]
                             )
@@ -56,8 +56,8 @@ class Configuration implements ConfigurationInterface
                             $this->addKeysConfig(
                                 'collection',
                                 [
-                                    'label_add' => 'label_add',
-                                    'label_delete' => 'label_delete',
+                                    '[label_add]' => 'label_add',
+                                    '[label_delete]' => 'label_delete',
                                 ]
                             )
                         )
@@ -65,8 +65,8 @@ class Configuration implements ConfigurationInterface
                             $this->addKeysConfig(
                                 'choice',
                                 [
-                                    'placeholder' => 'placeholder',
-                                    'empty_value' => 'empty_value',
+                                    '[placeholder]' => 'placeholder',
+                                    '[empty_value]' => 'empty_value',
                                 ]
                             )
                         )
