@@ -14,14 +14,14 @@ $finder = PhpCsFixer\Finder::create()
     ])
 ;
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setUsingCache(true)
     ->setFinder($finder)
     ->setRules([
         '@Symfony' => true,
         'php_unit_namespaced' => true,
-        'psr0' => false,
+        'psr_autoloading' => true,
         'concat_space' => ['spacing' => 'one'],
         'phpdoc_summary' => false,
         'phpdoc_annotation_without_dot' => false,
@@ -30,7 +30,7 @@ return PhpCsFixer\Config::create()
         'ordered_imports' => true,
         'simplified_null_return' => false,
         'header_comment' => ['header' => $header],
-        'yoda_style' => null,
+        'yoda_style' => [],
         'native_function_invocation' => ['include' => ['@compiler_optimized']],
         'single_line_throw' => false,
     ])

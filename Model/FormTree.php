@@ -67,7 +67,10 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
 
     /**
      * Set the loop back to the start
+     *
+     * @return void
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->position = 0;
@@ -75,10 +78,8 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
 
     /**
      * Return the length of the tree
-     *
-     * @return int
      */
-    public function count()
+    public function count(): int
     {
         return \count($this->nodes);
     }
@@ -88,6 +89,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      *
      * @return FormTreeNode
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->nodes[$this->position];
@@ -98,6 +100,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->position;
@@ -105,7 +108,10 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
 
     /**
      * Increment current position
+     *
+     * @return void
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         ++$this->position;
@@ -116,6 +122,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return $this->offsetExists($this->position);
@@ -128,6 +135,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->nodes[$offset]);
@@ -140,6 +148,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      *
      * @return FormTreeNode
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->offsetExists($offset) ? $this->nodes[$offset] : null;
@@ -150,7 +159,10 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      *
      * @param mixed $offset
      * @param mixed $value
+     *
+     * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         /* Not implemented: Use addParent and addChild methods */
@@ -160,7 +172,10 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      * Unset node at the given offset
      *
      * @param mixed $offset
+     *
+     * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         /* Not implemented: FormTree nodes should not be unsetable */
