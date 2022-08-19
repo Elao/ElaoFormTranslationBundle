@@ -10,8 +10,8 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Form\Extension;
 
-use Elao\Bundle\FormTranslationBundle\Builders\FormKeybuilder;
-use Elao\Bundle\FormTranslationBundle\Builders\FormTreebuilder;
+use Elao\Bundle\FormTranslationBundle\Builders\FormKeyBuilder;
+use Elao\Bundle\FormTranslationBundle\Builders\FormTreeBuilder;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
@@ -25,31 +25,23 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
 {
     /**
      * Form Tree treeBuilder
-     *
-     * @var FormTreebuilder
      */
-    protected $treeBuilder;
+    protected FormTreeBuilder $treeBuilder;
 
     /**
      * Form Key treeBuilder
-     *
-     * @var FormKeybuilder
      */
-    protected $keyBuilder;
+    protected FormKeyBuilder $keyBuilder;
 
     /**
      * Buildable keys list
-     *
-     * @var array
      */
-    protected $keys;
+    protected array $keys;
 
     /**
      * Whether automatic generation of missing keys is enabled or not
-     *
-     * @var bool
      */
-    protected $autoGenerate = false;
+    protected bool $autoGenerate = false;
 
     /**
      * Default translation domain for all forms
@@ -58,17 +50,14 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
      */
     protected $defaultTranslationDomain;
 
-    /**
-     * @var PropertyAccessor
-     */
-    protected $propertyAccessor;
+    protected PropertyAccessor $propertyAccessor;
 
     /**
      * Enable or disable automatic generation of missing labels
      *
      * @param bool $enabled The Boolean
      */
-    public function setAutoGenerate($enabled)
+    public function setAutoGenerate(bool $enabled): void
     {
         $this->autoGenerate = $enabled;
     }
@@ -76,9 +65,9 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Set Tree Builder
      *
-     * @param FormTreebuilder $treeBuilder The FormKeyBuilder
+     * @param FormTreeBuilder $treeBuilder The FormKeyBuilder
      */
-    public function setTreebuilder(FormTreebuilder $treeBuilder = null)
+    public function setTreeBuilder(FormTreeBuilder $treeBuilder = null): void
     {
         $this->treeBuilder = $treeBuilder;
     }
@@ -86,9 +75,9 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Set Key Builder
      *
-     * @param FormKeybuilder $keyBuilder The FormKeyBuilder
+     * @param FormKeyBuilder $keyBuilder The FormKeyBuilder
      */
-    public function setKeybuilder(FormKeybuilder $keyBuilder = null)
+    public function setKeyBuilder(FormKeyBuilder $keyBuilder = null): void
     {
         $this->keyBuilder = $keyBuilder;
     }
@@ -98,7 +87,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
      *
      * @param array $keys Array of keys
      */
-    public function setKeys(array $keys)
+    public function setKeys(array $keys): void
     {
         $this->keys = $keys;
     }
@@ -108,7 +97,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
      *
      * @param string|bool|null $defaultTranslationDomain
      */
-    public function setDefaultTranslationDomain($defaultTranslationDomain)
+    public function setDefaultTranslationDomain($defaultTranslationDomain): void
     {
         $this->defaultTranslationDomain = $defaultTranslationDomain;
     }
@@ -116,9 +105,9 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function finishView(FormView $view, FormInterface $form, array $options)
+    public function finishView(FormView $view, FormInterface $form, array $options): void
     {
-        if ($this->treeBuilder && $this->keyBuilder) {
+        if (isset($this->treeBuilder) && isset($this->keyBuilder)) {
             foreach ($this->keys as $key => $value) {
                 if ($this->optionEquals($options, $key, true)) {
                     $this->generateKey($view, $key, $value);
@@ -134,7 +123,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
      * @param string   $key   a key
      * @param string   $value
      */
-    protected function generateKey(FormView &$view, $key, $value)
+    protected function generateKey(FormView &$view, $key, $value): void
     {
         if (!isset($view->vars['tree'])) {
             $view->vars['tree'] = $this->treeBuilder->getTree($view);
@@ -163,7 +152,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
 
     protected function getPropertyAccessor(): PropertyAccessor
     {
-        if (!$this->propertyAccessor) {
+        if (!isset($this->propertyAccessor)) {
             $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
         }
 

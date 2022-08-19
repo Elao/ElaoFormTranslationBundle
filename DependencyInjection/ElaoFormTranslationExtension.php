@@ -27,7 +27,7 @@ class ElaoFormTranslationExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
@@ -49,7 +49,7 @@ class ElaoFormTranslationExtension extends Extension
      * @param LoaderInterface  $loader    The loader
      * @param array            $config    An array of config keys
      */
-    private function loadTreeConfig(ContainerBuilder $container, LoaderInterface $loader, array $config)
+    private function loadTreeConfig(ContainerBuilder $container, LoaderInterface $loader, array $config): void
     {
         // Set up the Key Builder
         $container

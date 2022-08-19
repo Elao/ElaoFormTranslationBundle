@@ -39,7 +39,7 @@ class CollectionTypeExtension extends TreeAwareExtension
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         if ($this->autoGenerate) {
             $resolver->setDefault('label_add', true);
@@ -50,9 +50,9 @@ class CollectionTypeExtension extends TreeAwareExtension
     /**
      * {@inheritdoc}
      */
-    public function finishView(FormView $view, FormInterface $form, array $options)
+    public function finishView(FormView $view, FormInterface $form, array $options): void
     {
-        if ($this->treeBuilder && $this->keyBuilder && $options['allow_add'] && $options['prototype']) {
+        if (isset($this->treeBuilder) && isset($this->keyBuilder) && $options['allow_add'] && $options['prototype']) {
             if ($view->vars['prototype']->vars['label'] == $options['prototype_name'] . 'label__') {
                 if (!isset($options['options']['label'])) {
                     $options['options']['label'] = $options['label'];

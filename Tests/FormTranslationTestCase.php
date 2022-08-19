@@ -8,7 +8,7 @@
  * @author Elao <contact@elao.com>
  */
 
-namespace Elao\Bundle\FormTranslationBundle\Test;
+namespace Elao\Bundle\FormTranslationBundle\Tests;
 
 use Elao\Bundle\FormTranslationBundle\Form\Extension;
 use PHPUnit\Framework\TestCase;

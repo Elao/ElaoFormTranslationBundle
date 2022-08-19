@@ -37,7 +37,7 @@ class ButtonTypeExtension extends TreeAwareExtension
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         if ($this->autoGenerate) {
             $resolver->setDefault('label', true);
