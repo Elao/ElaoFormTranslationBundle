@@ -36,6 +36,8 @@ class ChoiceTypeExtension extends TreeAwareExtension
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function configureOptions(OptionsResolver $resolver)
     {

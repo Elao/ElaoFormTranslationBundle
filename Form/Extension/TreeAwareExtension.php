@@ -115,6 +115,8 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function finishView(FormView $view, FormInterface $form, array $options)
     {

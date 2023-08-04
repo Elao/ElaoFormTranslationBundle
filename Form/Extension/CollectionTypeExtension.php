@@ -38,6 +38,8 @@ class CollectionTypeExtension extends TreeAwareExtension
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -49,6 +51,8 @@ class CollectionTypeExtension extends TreeAwareExtension
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
