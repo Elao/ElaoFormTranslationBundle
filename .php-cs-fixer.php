@@ -34,8 +34,5 @@ return (new PhpCsFixer\Config())
         'simplified_null_return' => false,
         'void_return' => true,
         'yoda_style' => [],
-
-        // @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5495
-        'binary_operator_spaces' => ['operators' => ['|' => null]]
     ])
 ;

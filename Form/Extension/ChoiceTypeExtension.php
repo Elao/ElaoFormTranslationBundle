@@ -18,25 +18,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class ChoiceTypeExtension extends TreeAwareExtension
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function getExtendedTypes(): iterable
     {
         return [ChoiceType::class];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getExtendedType()
-    {
-        return self::getExtendedTypes()[0];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         if ($this->defaultTranslationDomain !== null) {

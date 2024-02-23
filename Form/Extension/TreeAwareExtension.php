@@ -35,6 +35,8 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
 
     /**
      * Buildable keys list
+     *
+     * @var array<string,string>
      */
     protected array $keys;
 
@@ -67,7 +69,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
      *
      * @param FormTreeBuilder $treeBuilder The FormKeyBuilder
      */
-    public function setTreeBuilder(FormTreeBuilder $treeBuilder = null): void
+    public function setTreeBuilder(FormTreeBuilder $treeBuilder): void
     {
         $this->treeBuilder = $treeBuilder;
     }
@@ -77,7 +79,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
      *
      * @param FormKeyBuilder $keyBuilder The FormKeyBuilder
      */
-    public function setKeyBuilder(FormKeyBuilder $keyBuilder = null): void
+    public function setKeyBuilder(FormKeyBuilder $keyBuilder): void
     {
         $this->keyBuilder = $keyBuilder;
     }
@@ -85,7 +87,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     /**
      * Set buildable keys
      *
-     * @param array $keys Array of keys
+     * @param array<string,string> $keys Array of keys
      */
     public function setKeys(array $keys): void
     {
@@ -102,9 +104,6 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
         $this->defaultTranslationDomain = $defaultTranslationDomain;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function finishView(FormView $view, FormInterface $form, array $options): void
     {
         if (isset($this->treeBuilder) && isset($this->keyBuilder)) {
@@ -132,7 +131,10 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
         $this->setVar($view->vars, $key, $this->keyBuilder->buildKeyFromTree($view->vars['tree'], $value));
     }
 
-    protected function setVar(array &$vars, string $key, $value): void
+    /**
+     * @param array<string,mixed> &$vars
+     */
+    protected function setVar(array &$vars, string $key, mixed $value): void
     {
         if ($this->getPropertyAccessor()->isWritable($vars, $key)) {
             $this->getPropertyAccessor()->setValue($vars, $key, $value);
@@ -141,7 +143,10 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
         }
     }
 
-    protected function optionEquals(array $options, string $key, $value): bool
+    /**
+     * @param array<string,mixed> $options
+     */
+    protected function optionEquals(array $options, string $key, mixed $value): bool
     {
         if ($this->getPropertyAccessor()->isReadable($options, $key)) {
             return $this->getPropertyAccessor()->getValue($options, $key) === $value;

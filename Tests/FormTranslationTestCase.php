@@ -12,18 +12,14 @@ namespace Elao\Bundle\FormTranslationBundle\Tests;
 
 use Elao\Bundle\FormTranslationBundle\Form\Extension;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\Forms;
+use Symfony\Component\Form\FormTypeExtensionInterface;
 
 abstract class FormTranslationTestCase extends TestCase
 {
-    /**
-     * @var \Symfony\Component\Form\FormFactoryInterface
-     */
-    protected $factory;
+    protected FormFactoryInterface $factory;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         $this->factory = Forms::createFormFactoryBuilder()
@@ -34,17 +30,15 @@ abstract class FormTranslationTestCase extends TestCase
     /**
      * Get Form Type Extensions
      *
-     * @return array
+     * @return array<FormTypeExtensionInterface>
      */
-    protected function getTypeExtensions()
+    protected function getTypeExtensions(): array
     {
-        $extensions = [
+        return [
             new Extension\ButtonTypeExtension(),
             new Extension\ChoiceTypeExtension(),
             new Extension\CollectionTypeExtension(),
             new Extension\FormTypeExtension(),
         ];
-
-        return $extensions;
     }
 }

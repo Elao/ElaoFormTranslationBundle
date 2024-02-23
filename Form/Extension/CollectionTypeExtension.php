@@ -20,25 +20,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class CollectionTypeExtension extends TreeAwareExtension
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function getExtendedTypes(): iterable
     {
         return [CollectionType::class];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getExtendedType()
-    {
-        return self::getExtendedTypes()[0];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         if ($this->autoGenerate) {
@@ -47,9 +33,6 @@ class CollectionTypeExtension extends TreeAwareExtension
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function finishView(FormView $view, FormInterface $form, array $options): void
     {
         if (isset($this->treeBuilder) && isset($this->keyBuilder) && $options['allow_add'] && $options['prototype']) {

@@ -14,11 +14,16 @@ namespace Elao\Bundle\FormTranslationBundle\Model;
  * A form Tree
  *
  * @author Thomas Jarrand <thomas.jarrand@gmail.com>
+ *
+ * @implements \Iterator<FormTreeNode>
+ * @implements \ArrayAccess<int,FormTreeNode>
  */
 class FormTree implements \Iterator, \Countable, \ArrayAccess
 {
     /**
      * The FormTreeNode elements
+     *
+     * @var array<FormTreeNode>
      */
     private array $nodes;
 
@@ -27,6 +32,9 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      */
     private int $position = 0;
 
+    /**
+     * @param array<FormTreeNode> $nodes
+     */
     public function __construct(array $nodes = [])
     {
         $this->nodes = $nodes;
@@ -111,8 +119,6 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
 
     /**
      * Return whether or not the given offset exists
-     *
-     * @param mixed $offset
      */
     #[\ReturnTypeWillChange]
     public function offsetExists($offset): bool
@@ -122,20 +128,15 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
 
     /**
      * Get the node at the given offset
-     *
-     * @param mixed $offset
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset): FormTreeNode
+    public function offsetGet($offset): ?FormTreeNode
     {
         return $this->offsetExists($offset) ? $this->nodes[$offset] : null;
     }
 
     /**
      * Set the node at the given offset
-     *
-     * @param mixed $offset
-     * @param mixed $value
      */
     #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value): void
@@ -145,8 +146,6 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
 
     /**
      * Unset node at the given offset
-     *
-     * @param mixed $offset
      */
     #[\ReturnTypeWillChange]
     public function offsetUnset($offset): void

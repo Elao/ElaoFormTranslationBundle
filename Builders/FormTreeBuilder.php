@@ -23,6 +23,8 @@ class FormTreeBuilder
 {
     /**
      * Form type with no children labels
+     *
+     * @var array<string>
      */
     private array $noChildren = ['date', 'time', 'datetime', 'choice'];
 
@@ -47,7 +49,7 @@ class FormTreeBuilder
     /**
      * Set form type that should not be treated as having children
      *
-     * @param array $types An array of types
+     * @param array<string> $types An array of types
      */
     public function setNoChildren(array $types): void
     {

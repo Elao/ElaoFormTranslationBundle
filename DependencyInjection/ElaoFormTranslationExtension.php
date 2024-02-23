@@ -24,9 +24,6 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  */
 class ElaoFormTranslationExtension extends Extension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
@@ -45,9 +42,9 @@ class ElaoFormTranslationExtension extends Extension
     /**
      * Load Tree configuration
      *
-     * @param ContainerBuilder $container The container builder
-     * @param LoaderInterface  $loader    The loader
-     * @param array            $config    An array of config keys
+     * @param ContainerBuilder    $container The container builder
+     * @param LoaderInterface     $loader    The loader
+     * @param array<string,mixed> $config    An array of config keys
      */
     private function loadTreeConfig(ContainerBuilder $container, LoaderInterface $loader, array $config): void
     {
