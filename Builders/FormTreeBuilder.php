@@ -24,18 +24,16 @@ class FormTreeBuilder
     /**
      * Form type with no children labels
      *
-     * @var array
+     * @var array<string>
      */
-    private $noChildren = ['date', 'time', 'datetime', 'choice'];
+    private array $noChildren = ['date', 'time', 'datetime', 'choice'];
 
     /**
      * Get the full tree for a given view
      *
      * @param FormView $view The FormView
-     *
-     * @return array
      */
-    public function getTree(FormView $view)
+    public function getTree(FormView $view): FormTree
     {
         if ($view->parent !== null) {
             $tree = $this->getTree($view->parent);
@@ -51,19 +49,17 @@ class FormTreeBuilder
     /**
      * Set form type that should not be treated as having children
      *
-     * @param array $types An array of types
+     * @param array<string> $types An array of types
      */
-    public function setNoChildren(array $types)
+    public function setNoChildren(array $types): void
     {
         $this->noChildren = $types;
     }
 
     /**
      * Create a FormTreeNode for the given view
-     *
-     * @return FormTreeNode
      */
-    private function createNodeFromView(FormView $view)
+    private function createNodeFromView(FormView $view): FormTreeNode
     {
         $haschildren = $this->hasChildrenWithLabel($view);
         $isCollection = $haschildren ? $this->isCollection($view) : false;
@@ -76,10 +72,8 @@ class FormTreeBuilder
      * Test if the given form view has children with labels
      *
      * @param FormView $view The FormView
-     *
-     * @return bool
      */
-    private function hasChildrenWithLabel(FormView $view)
+    private function hasChildrenWithLabel(FormView $view): bool
     {
         if (!isset($view->vars['compound']) || !$view->vars['compound']) {
             return false;
@@ -98,10 +92,8 @@ class FormTreeBuilder
      * Test if the given form view is a collection
      *
      * @param FormView $view The FormView
-     *
-     * @return bool
      */
-    private function isCollection(FormView $view)
+    private function isCollection(FormView $view): bool
     {
         if ($view->parent === null || !$view->vars['compound']) {
             return false;
@@ -114,10 +106,8 @@ class FormTreeBuilder
      * Test if the given form view is a prototype in a collection
      *
      * @param FormView $view The FormView
-     *
-     * @return bool
      */
-    private function isPrototype(FormView $view)
+    private function isPrototype(FormView $view): bool
     {
         return $view->parent && $this->isCollection($view->parent);
     }

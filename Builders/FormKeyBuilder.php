@@ -21,31 +21,23 @@ class FormKeyBuilder
 {
     /**
      * Separator te be used between nodes
-     *
-     * @var string
      */
-    protected $separator;
+    protected string $separator;
 
     /**
      * Prefix at the root of the key
-     *
-     * @var string
      */
-    protected $root;
+    protected string $root;
 
     /**
      * Prefix for children nodes
-     *
-     * @var string
      */
-    protected $children;
+    protected string $children;
 
     /**
      * Prefix for prototype nodes
-     *
-     * @var string
      */
-    protected $prototype;
+    protected string $prototype;
 
     /**
      * Constructor
@@ -55,8 +47,12 @@ class FormKeyBuilder
      * @param string $children  Prefix for children nodes
      * @param string $prototype Prefix for prototype nodes
      */
-    public function __construct($separator = '.', $root = 'form', $children = 'children', $prototype = 'prototype')
-    {
+    public function __construct(
+        string $separator = '.',
+        string $root = 'form',
+        string $children = 'children',
+        string $prototype = 'prototype'
+    ) {
         $this->separator = $separator;
         $this->root = $root;
         $this->children = $children;
@@ -71,7 +67,7 @@ class FormKeyBuilder
      *
      * @return string The key
      */
-    public function buildKeyFromTree(FormTree $tree, $parent)
+    public function buildKeyFromTree(FormTree $tree, $parent): string
     {
         $key = [];
 

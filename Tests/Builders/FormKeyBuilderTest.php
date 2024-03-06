@@ -12,7 +12,7 @@ namespace Elao\Bundle\FormTranslationBundle\Tests\Builders;
 
 use Elao\Bundle\FormTranslationBundle\Builders\FormKeyBuilder;
 use Elao\Bundle\FormTranslationBundle\Builders\FormTreeBuilder;
-use Elao\Bundle\FormTranslationBundle\Test\FormTranslationTestCase;
+use Elao\Bundle\FormTranslationBundle\Tests\FormTranslationTestCase;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,7 +22,7 @@ class FormKeyBuilderTest extends FormTranslationTestCase
     /**
      * Test that the trees are properly built
      */
-    public function testSimpleTreeBuilder()
+    public function testSimpleTreeBuilder(): void
     {
         $treeBuilder = new FormTreeBuilder();
         $keyBuilder = new FormKeyBuilder();
@@ -41,7 +41,7 @@ class FormKeyBuilderTest extends FormTranslationTestCase
     /**
      * Test that the collection trees are properly built
      */
-    public function testCollectionTreeBuilder()
+    public function testCollectionTreeBuilder(): void
     {
         $treeBuilder = new FormTreeBuilder();
         $keyBuilder = new FormKeyBuilder();

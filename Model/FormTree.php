@@ -14,29 +14,28 @@ namespace Elao\Bundle\FormTranslationBundle\Model;
  * A form Tree
  *
  * @author Thomas Jarrand <thomas.jarrand@gmail.com>
+ *
+ * @implements \Iterator<FormTreeNode>
+ * @implements \ArrayAccess<int,FormTreeNode>
  */
 class FormTree implements \Iterator, \Countable, \ArrayAccess
 {
     /**
      * The FormTreeNode elements
      *
-     * @var array
+     * @var array<FormTreeNode>
      */
-    private $nodes;
+    private array $nodes;
 
     /**
      * Current position in the loop
-     *
-     * @var int
      */
-    private $position = 0;
+    private int $position = 0;
 
     /**
-     * Constructor
-     *
-     * @param array $nodes
+     * @param array<FormTreeNode> $nodes
      */
-    public function __construct($nodes = [])
+    public function __construct(array $nodes = [])
     {
         $this->nodes = $nodes;
     }
@@ -48,7 +47,7 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      *
      * @return int The new number of elements in the Tree
      */
-    public function addParent(FormTreeNode $node)
+    public function addParent(FormTreeNode $node): int
     {
         return array_unshift($this->nodes, $node);
     }
@@ -60,18 +59,16 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
      *
      * @return int The new number of elements in the Tree
      */
-    public function addChild(FormTreeNode $node)
+    public function addChild(FormTreeNode $node): int
     {
         return array_push($this->nodes, $node);
     }
 
     /**
      * Set the loop back to the start
-     *
-     * @return void
      */
     #[\ReturnTypeWillChange]
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
     }
@@ -86,97 +83,72 @@ class FormTree implements \Iterator, \Countable, \ArrayAccess
 
     /**
      * Return the current Node in the loop
-     *
-     * @return FormTreeNode
      */
     #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): FormTreeNode
     {
         return $this->nodes[$this->position];
     }
 
     /**
      * Return the current position in the loop
-     *
-     * @return int
      */
     #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): int
     {
         return $this->position;
     }
 
     /**
      * Increment current position
-     *
-     * @return void
      */
     #[\ReturnTypeWillChange]
-    public function next()
+    public function next(): void
     {
         ++$this->position;
     }
 
     /**
      * Return whether or not the current position is valid
-     *
-     * @return int
      */
     #[\ReturnTypeWillChange]
-    public function valid()
+    public function valid(): bool
     {
         return $this->offsetExists($this->position);
     }
 
     /**
      * Return whether or not the given offset exists
-     *
-     * @param mixed $offset
-     *
-     * @return bool
      */
     #[\ReturnTypeWillChange]
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->nodes[$offset]);
     }
 
     /**
      * Get the node at the given offset
-     *
-     * @param mixed $offset
-     *
-     * @return FormTreeNode
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?FormTreeNode
     {
         return $this->offsetExists($offset) ? $this->nodes[$offset] : null;
     }
 
     /**
      * Set the node at the given offset
-     *
-     * @param mixed $offset
-     * @param mixed $value
-     *
-     * @return void
      */
     #[\ReturnTypeWillChange]
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         /* Not implemented: Use addParent and addChild methods */
     }
 
     /**
      * Unset node at the given offset
-     *
-     * @param mixed $offset
-     *
-     * @return void
      */
     #[\ReturnTypeWillChange]
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         /* Not implemented: FormTree nodes should not be unsetable */
     }

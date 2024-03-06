@@ -18,26 +18,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class ButtonTypeExtension extends TreeAwareExtension
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function getExtendedTypes(): iterable
     {
         return [ButtonType::class];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getExtendedType()
-    {
-        return self::getExtendedTypes()[0];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         if ($this->autoGenerate) {
             $resolver->setDefault('label', true);

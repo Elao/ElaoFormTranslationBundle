@@ -22,13 +22,10 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('elao_form_translation');
-        $rootNode = method_exists($treeBuilder, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root('elao_form_translation');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->info('<info>Activate the Form Tree component (used to generate label translation keys)</info>')
@@ -78,18 +75,22 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('children')
                             ->defaultValue('children')
+                            ->treatNullLike(false)
                             ->info('Prefix for children nodes (string|false)')
                         ->end()
                         ->scalarNode('prototype')
                             ->defaultValue('prototype')
+                            ->treatNullLike(false)
                             ->info('Prefix for prototype nodes (string|false)')
                         ->end()
                         ->scalarNode('root')
                             ->defaultValue('form')
+                            ->treatNullLike(false)
                             ->info('Prefix at the root of the key (string|false)')
                         ->end()
                         ->scalarNode('separator')
                             ->defaultValue('.')
+                            ->treatNullLike(false)
                             ->info('Separator te be used between nodes (string|false)')
                         ->end()
                     ->end()
@@ -106,15 +107,14 @@ class Configuration implements ConfigurationInterface
     /**
      * Add Keys Config
      *
-     * @param string $key
-     * @param array  $default
+     * @param array<string,string> $default
      *
      * @return ArrayNodeDefinition|NodeDefinition
      */
-    public function addKeysConfig($key, $default = [])
+    public function addKeysConfig(string $key, array $default = [])
     {
         $treeBuilder = new TreeBuilder($key);
-        $node = method_exists($treeBuilder, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root($key);
+        $node = $treeBuilder->getRootNode();
 
         $node
             ->prototype('scalar')
