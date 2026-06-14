@@ -30,7 +30,7 @@ abstract class FormTranslationTestCase extends TestCase
     /**
      * Get Form Type Extensions
      *
-     * @return array<FormTypeExtensionInterface>
+     * @return array<FormTypeExtensionInterface<Extension\TreeAwareExtension>>
      */
     protected function getTypeExtensions(): array
     {

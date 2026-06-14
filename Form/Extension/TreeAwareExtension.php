@@ -132,7 +132,7 @@ abstract class TreeAwareExtension extends AbstractTypeExtension
     }
 
     /**
-     * @param array<string,mixed> &$vars
+     * @param array<mixed> &$vars
      */
     protected function setVar(array &$vars, string $key, mixed $value): void
     {
