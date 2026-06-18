@@ -1,8 +1,7 @@
 ElaoFormTranslationBundle
 =========================
 
-![](https://img.shields.io/badge/Symfony-4.0-blue.svg)
-[![Build Status](http://api.travis-ci.org/Elao/ElaoFormTranslationBundle.png)](http://travis-ci.org/Elao/ElaoFormTranslationBundle)
+[![CI](https://github.com/Elao/ElaoFormTranslationBundle/actions/workflows/ci.yaml/badge.svg)](https://github.com/Elao/ElaoFormTranslationBundle/actions/workflows/ci.yaml)
 
 Description:
 --------------
@@ -39,11 +38,13 @@ _Note: The keys will only be generated at runtime and won't be dumped when you u
 Installation:
 --------------
 
+This bundle supports maintained Symfony versions only.
+
 Add ElaoFormTranslationBundle to your composer.json:
 ``` json
 {
     "require": {
-        "elao/form-translation-bundle": "3.*"
+        "elao/form-translation-bundle": "4.*"
     }
 }
 ```
@@ -54,19 +55,6 @@ Now download the bundle by running the command:
 $ php composer.phar update elao/form-translation-bundle
 ```
 
-Register the bundle in the kernel:
-
-``` php
-<?php
-// app/AppKernel.php
-
-public function registerBundles()
-{
-    $bundles = array(
-        // ...
-        new Elao\Bundle\FormTranslationBundle\ElaoFormTranslationBundle(),
-    );
-}
 ```
 
 How to use it:
