@@ -15,7 +15,7 @@
   </php>
   <testsuites>
     <testsuite name="ElaoFormTranslation Test Suite">
-      <directory suffix="Test.php">./Tests/</directory>
+      <directory suffix="Test.php">tests</directory>
     </testsuite>
   </testsuites>
 </phpunit>

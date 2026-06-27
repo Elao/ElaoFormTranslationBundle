@@ -30,7 +30,7 @@ class ElaoFormTranslationExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         if ($config['enabled']) {
-            $loader = new Loader\PhpFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+            $loader = new Loader\PhpFileLoader($container, new FileLocator(\dirname(__DIR__, 2) . '/config'));
 
             $loader->load('services.php');
             $loader->load('forms.php');
