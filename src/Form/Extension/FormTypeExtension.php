@@ -29,7 +29,7 @@ class FormTypeExtension extends TreeAwareExtension
             $resolver->setDefault('label', true);
         }
 
-        if ($this->defaultTranslationDomain !== null) {
+        if (null !== $this->defaultTranslationDomain) {
             $resolver->setDefault('translation_domain', $this->defaultTranslationDomain);
         }
 

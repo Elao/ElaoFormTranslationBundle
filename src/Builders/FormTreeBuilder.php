@@ -35,7 +35,7 @@ class FormTreeBuilder
      */
     public function getTree(FormView $view): FormTree
     {
-        if ($view->parent !== null) {
+        if (null !== $view->parent) {
             $tree = $this->getTree($view->parent);
         } else {
             $tree = new FormTree();
@@ -95,7 +95,7 @@ class FormTreeBuilder
      */
     private function isCollection(FormView $view): bool
     {
-        if ($view->parent === null || !$view->vars['compound']) {
+        if (null === $view->parent || !$view->vars['compound']) {
             return false;
         }
 
