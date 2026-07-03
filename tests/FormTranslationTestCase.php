@@ -10,7 +10,6 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Tests;
 
-use Elao\Bundle\FormTranslationBundle\Form\Extension;
 use Elao\Bundle\FormTranslationBundle\Form\Extension\ButtonTypeExtension;
 use Elao\Bundle\FormTranslationBundle\Form\Extension\ChoiceTypeExtension;
 use Elao\Bundle\FormTranslationBundle\Form\Extension\CollectionTypeExtension;
@@ -34,7 +33,7 @@ abstract class FormTranslationTestCase extends TestCase
     /**
      * Get Form Type Extensions
      *
-     * @return array<FormTypeExtensionInterface<Extension\TreeAwareExtension>>
+     * @return array<FormTypeExtensionInterface<mixed>>
      */
     protected function getTypeExtensions(): array
     {
