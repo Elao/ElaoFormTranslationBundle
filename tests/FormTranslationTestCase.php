@@ -10,7 +10,10 @@
 
 namespace Elao\Bundle\FormTranslationBundle\Tests;
 
-use Elao\Bundle\FormTranslationBundle\Form\Extension;
+use Elao\Bundle\FormTranslationBundle\Form\Extension\ButtonTypeExtension;
+use Elao\Bundle\FormTranslationBundle\Form\Extension\ChoiceTypeExtension;
+use Elao\Bundle\FormTranslationBundle\Form\Extension\CollectionTypeExtension;
+use Elao\Bundle\FormTranslationBundle\Form\Extension\FormTypeExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\Forms;
@@ -30,15 +33,15 @@ abstract class FormTranslationTestCase extends TestCase
     /**
      * Get Form Type Extensions
      *
-     * @return array<FormTypeExtensionInterface>
+     * @return array<FormTypeExtensionInterface<mixed>>
      */
     protected function getTypeExtensions(): array
     {
         return [
-            new Extension\ButtonTypeExtension(),
-            new Extension\ChoiceTypeExtension(),
-            new Extension\CollectionTypeExtension(),
-            new Extension\FormTypeExtension(),
+            new ButtonTypeExtension(),
+            new ChoiceTypeExtension(),
+            new CollectionTypeExtension(),
+            new FormTypeExtension(),
         ];
     }
 }

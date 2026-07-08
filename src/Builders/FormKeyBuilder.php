@@ -51,7 +51,7 @@ class FormKeyBuilder
         string $separator = '.',
         string $root = 'form',
         string $children = 'children',
-        string $prototype = 'prototype'
+        string $prototype = 'prototype',
     ) {
         $this->separator = $separator;
         $this->root = $root;

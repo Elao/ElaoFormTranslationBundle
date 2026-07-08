@@ -25,7 +25,7 @@ class ChoiceTypeExtension extends TreeAwareExtension
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        if ($this->defaultTranslationDomain !== null) {
+        if (null !== $this->defaultTranslationDomain) {
             $resolver->setDefault('choice_translation_domain', $this->defaultTranslationDomain);
         }
     }

@@ -33,6 +33,6 @@ return (new PhpCsFixer\Config())
         'single_line_throw' => false,
         'simplified_null_return' => false,
         'void_return' => true,
-        'yoda_style' => [],
+        'yoda_style' => true,
     ])
 ;

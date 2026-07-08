@@ -13,9 +13,9 @@ namespace Elao\Bundle\FormTranslationBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * ElaoFormTranslation extension
@@ -30,10 +30,10 @@ class ElaoFormTranslationExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         if ($config['enabled']) {
-            $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+            $loader = new Loader\PhpFileLoader($container, new FileLocator(\dirname(__DIR__, 2) . '/config'));
 
-            $loader->load('services.xml');
-            $loader->load('forms.xml');
+            $loader->load('services.php');
+            $loader->load('forms.php');
 
             $this->loadTreeConfig($container, $loader, $config);
         }

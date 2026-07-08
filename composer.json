@@ -16,23 +16,28 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
-        "symfony/framework-bundle": "^5.4|^6.0|^7.0",
-        "symfony/form": "^5.4|^6.0|^7.0",
-        "symfony/property-access": "^5.4|^6.0|^7.0"
+        "php": "^8.2",
+        "symfony/framework-bundle": "^6.4|^7.4|^8.0",
+        "symfony/form": "^6.4|^7.4|^8.0",
+        "symfony/property-access": "^6.4|^7.4|^8.0"
     },
     "require-dev": {
-        "ekino/phpstan-banned-code": "^1.0",
+        "ekino/phpstan-banned-code": "^3.2",
         "friendsofphp/php-cs-fixer": "^3.10",
-        "phpstan/extension-installer": "^1.1",
-        "phpstan/phpstan": "^1.8",
-        "phpstan/phpstan-symfony": "^1.2",
-        "symfony/phpunit-bridge": "^5.0",
-        "phpstan/phpstan-phpunit": "^1.1"
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.2",
+        "phpstan/phpstan-symfony": "^2.0",
+        "symfony/phpunit-bridge": "^6.0",
+        "phpstan/phpstan-phpunit": "^2.0"
     },
     "autoload": {
         "psr-4": {
-            "Elao\\Bundle\\FormTranslationBundle\\": "."
+            "Elao\\Bundle\\FormTranslationBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Elao\\Bundle\\FormTranslationBundle\\Tests\\": "tests/"
         }
     },
     "prefer-stable": true,

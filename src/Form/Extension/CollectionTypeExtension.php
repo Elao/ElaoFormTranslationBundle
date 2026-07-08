@@ -36,7 +36,7 @@ class CollectionTypeExtension extends TreeAwareExtension
     public function finishView(FormView $view, FormInterface $form, array $options): void
     {
         if (isset($this->treeBuilder) && isset($this->keyBuilder) && $options['allow_add'] && $options['prototype']) {
-            if ($view->vars['prototype']->vars['label'] == $options['prototype_name'] . 'label__') {
+            if ($options['prototype_name'] . 'label__' == $view->vars['prototype']->vars['label']) {
                 if (!isset($options['options']['label'])) {
                     $options['options']['label'] = $options['label'];
                 }
@@ -44,7 +44,7 @@ class CollectionTypeExtension extends TreeAwareExtension
             }
 
             foreach ($this->keys as $key => $value) {
-                if (isset($options['options'][$key]) && $options['options'][$key] === true) {
+                if (isset($options['options'][$key]) && true === $options['options'][$key]) {
                     $this->generateKey($view->vars['prototype'], $key, $value);
                 }
             }
